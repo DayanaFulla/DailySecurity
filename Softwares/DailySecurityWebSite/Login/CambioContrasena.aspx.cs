@@ -50,14 +50,17 @@ public partial class Login_CambioContraseña : System.Web.UI.Page
     protected void CambiarContraseña(object sender, EventArgs e)
     {
         int idUser = Int32.Parse(IdUsuario);
+        int idRecup = Int32.Parse(IdRecuperacion);
         String NewPasswo = TxtNewPassword.Text;
         String SamePasswo = TxtSamePassword.Text;
 
         if (NewPasswo.Equals(SamePasswo)){
             System.Diagnostics.Debug.WriteLine("Entro a Cambiar");
             UsuarioBRL.UpdateUsuarioPassword(idUser, NewPasswo);
-            Response.Redirect("http://localhost:4667/Login/SingUp.aspx");
-        }else{
+            RecuperacionBRL.DeleteRecuperacion(idRecup);
+            Server.Transfer("SignUp.aspx", true);
+        }
+        else{
             btnConfirmar.Attributes["onclick"] = "alert('Los campos deben ser los mismos'); return false ;";
         }
     }
