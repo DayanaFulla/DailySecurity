@@ -29,7 +29,7 @@
 </head>
 <body >
     <form id="form1" runat="server">
-    <div class="text-center" style="margin-right: auto; margin-left:auto; width: 400px;border: 3px solid #9D00AE; background-color: white; box-shadow: 0px 0px 69px -4px rgba(169,173,185,1); height: 450px; margin-top: 50px;">
+    <div class="text-center" style ="  margin-right: auto; margin-left:auto; width: 400px;border: 3px solid #9D00AE; background-color: white; box-shadow: 0px 0px 69px -4px rgba(169,173,185,1); height: 450px; margin-top: 50px;">
         <br />
         <h2 class="text-center">Bienvenido</h2>
         <h4>Esta es su guía para recuperar su contraseña:</h4>

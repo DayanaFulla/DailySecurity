@@ -99,4 +99,17 @@ public class RecuperacionBRL
         return palabra;
     }
 
+    public static Recuperacion GetRecupByIdUserAndCodigo(int idUser, string codigo)
+    {
+        if (idUser <= 0 || string.IsNullOrEmpty(codigo))
+            throw new ArgumentException("Id y codigo con valor invalido");
+
+        RecuperacionDSTableAdapters.RecuperacionTableAdapter adapter = new RecuperacionDSTableAdapters.RecuperacionTableAdapter();
+        RecuperacionDS.RecuperacionDataTable table = adapter.GetRecuperacionByCodigoAndUserID(codigo,idUser);
+        if (table.Rows.Count == 0)
+            return null;
+
+        Recuperacion obj = GetRecuperacionFromRow(table[0]);
+        return obj;
+    }
 }

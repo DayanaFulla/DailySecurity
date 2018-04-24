@@ -43,7 +43,7 @@ public partial class Login_Recuperar : System.Web.UI.Page
                 
                 MsgError.Visible = true;
                 Recuperacion obj = RecuperacionBRL.GetRecuperacionById(idRecu);
-                UsuarioBRL.UpdateUsuarioPassword(usuario.UsuarioID, obj.Codigo);
+                //UsuarioBRL.UpdateUsuarioPassword(usuario.UsuarioID, obj.Codigo);
 
                 EnviarEmail(email, obj.Codigo,usuario.UsuarioID,idRecu);
 
@@ -75,12 +75,12 @@ public partial class Login_Recuperar : System.Web.UI.Page
         body = body + "<title></title>";
         body = body + "</head>";
         body = body + "<body>";
-        body = body + "<div class=\"text -center\" style=\"margin-right: auto; margin-left:auto; width: 400px;border: 3px solid #9D00AE; background-color: white; box-shadow: 0px 0px 69px -4px rgba(169,173,185,1);  margin-top: 50px;\">";
-        body = body + "<h3 style = \"text -align: center; font-family: Arial; margin-top: 0px;margin-bottom: 5px;\" > Su nueva contraseña esta aqui:</h3>";
-        body = body + "<h6 style = \"margin -left:5px;margin-right:5px; font-family: Arial; margin-top: 0px;margin-bottom: 5px;\" > Gracias por solicitar su servicio de<Strong> Recuperación de Contraseña</Strong> enseguida estara el link para que pueda personalizar nuevamente su contraseña:</h6>";
-        body = body + "<h6 style = \"margin -left:5px;margin-right:5px; font-family: Arial;margin-top: 0px;margin-bottom: 5px; font-size: 10px;\" > Su nueva Contraseña es:" + codigo + "</h6>";
+        body = body + "<div class=\"text -center\" style=\"margin-right: auto; margin-left:auto; width: 400px;border: 3px solid #9D00AE; background-color: white; margin-top: 50px;\">";
+        body = body + "<h3 style = \"text -align: center; font-family:Calibri; font-size:15px; margin-top: 0px;margin-bottom: 5px;\" > <strong> Su nueva contraseña esta aqui: </strong></h3>";
+        body = body + "<h6 style = \"margin -left:5px;margin-right:5px; font-family:Calibri; font-size:15px; margin-top: 0px;margin-bottom: 5px;\" > Gracias por solicitar su servicio de<Strong> Recuperación de Contraseña</Strong> enseguida estara el link para que pueda personalizar nuevamente su contraseña:</h6>";
+        body = body + "<h6 style = \"margin -left:5px;margin-right:5px; font-family:Calibri; font-size:15px; margin-top: 0px;margin-bottom: 5px; font-size: 10px;\" > Copie este codigo en el enlace de abajo:" + codigo + "</h6>";
         body = body + "<div style = \"text -align: center; margin-bottom: 5px;\" >";
-        body = body + "<a style= \"align -content: center; font-family: Arial; font-size: 10px;text-decoration: none;\" href= \"http://localhost:4667/Login/CambioContrasena.aspx?Codigo="+codigo+"&IdUser="+UsuarioId+"&IdRecu="+IdRec+"\">   Enlace Aquí</a>";
+        body = body + "<a style= \"align -content: center; font-family:Calibri; font-size:15px; text-decoration: none;\" href= \"http://localhost:4667/Login/CodigoRecuperacion.aspx?IdUser=" + UsuarioId+"\">   Enlace Aquí</a>";
         body = body + "</div>";
         body = body + "</div>";
         body = body + "</body>";
@@ -93,7 +93,7 @@ public partial class Login_Recuperar : System.Web.UI.Page
 
             mail.From = new MailAddress(correo, "Daily Security");
             mail.To.Add(email);
-            mail.Subject = "Nueva Contraseña";
+            mail.Subject = "Resuperación de Contraseña";
             mail.IsBodyHtml = true;
             mail.Body = body;
             SmtpServer.Port = 587;

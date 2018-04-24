@@ -64,9 +64,9 @@ public class UsuarioBRL
             throw new ArgumentException("valores no validos");
 
         System.Diagnostics.Debug.WriteLine("En Update estos datos: "+Id +" - "+contraseña);
-
+        string encriptada = EncriptarClass.Encriptar(contraseña);
         UsuarioDSTableAdapters.UsuarioTableAdapter adapter = new UsuarioDSTableAdapters.UsuarioTableAdapter();
-        adapter.UpdateUsuarioPassword(Id,contraseña);
+        adapter.UpdateUsuarioPassword(Id, encriptada);
     }
         
 }

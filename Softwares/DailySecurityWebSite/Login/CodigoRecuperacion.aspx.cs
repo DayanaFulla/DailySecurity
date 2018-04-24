@@ -1,0 +1,70 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+public partial class Login_CodigoRecuperacion : System.Web.UI.Page
+{
+    string idUser = "";
+    
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        idUser = Convert.ToString(Request.QueryString["IdUser"]);
+        DivCambio.Visible = false;
+        if (string.IsNullOrEmpty(idUser))
+        {
+            Response.Write("<script language=javascript>alert('Sin Usuario');window.location.href = \"http://localhost:4667/Home.aspx\";</script>");
+            return;
+        }
+
+
+    }
+    protected void VerificarExistencia(object sender, EventArgs e)
+    {
+        int UserID = Int32.Parse(idUser);
+        Usuario user = UsuarioBRL.GetUsuarioById(UserID);
+        string codigo = TxtCodigo.Text;
+        System.Diagnostics.Debug.WriteLine("Esto es lo que envio en codigo: "+ codigo);
+        Recuperacion recup = RecuperacionBRL.GetRecupByIdUserAndCodigo(UserID, codigo);
+        
+        if (recup == null)
+        {
+            System.Diagnostics.Debug.WriteLine("Esto"+codigo);
+            Response.Write("<script language=javascript>alert('No existe');window.location.href = \"http://localhost:4667/Home.aspx\";</script>");
+            return;
+        }
+        int comparacion = DateTime.Compare(recup.HorarioFin, DateTime.Now);
+
+        if (!recup.Estado.Equals("P") || comparacion <= 0)
+        {
+            RecuperacionBRL.DeleteRecuperacion(recup.ResuperacionId);
+            Response.Write("<script language=javascript>alert('Vuelva a solicitar el servicio'); window.location.href = \"http://localhost:4667/Login/Recuperar.aspx\";</script>");
+            return;
+        }
+        RecuperacionBRL.DeleteRecuperacion(recup.ResuperacionId);
+        DivVerificacion.Visible = false;
+        DivCambio.Visible = true;
+        
+    }
+
+    protected void CambiarContraseña(object sender, EventArgs e)
+    {
+        int UserID = Int32.Parse(idUser);
+        String NewPasswo = TxtNewPassword.Text;
+        String SamePasswo = TxtSamePassword.Text;
+
+        if (NewPasswo.Equals(SamePasswo))
+        {
+            
+            UsuarioBRL.UpdateUsuarioPassword(UserID, NewPasswo);
+            btnConfirmar.Attributes["onclick"] = "alert('Cambio Exitoso'); window.location.href = \"http://localhost:4667/Login/Login.aspx\";";
+        }
+        else
+        {
+            btnConfirmar.Attributes["onclick"] = "alert('Los campos deben ser los mismos'); return false ;";
+        }
+        
+    }
+}
