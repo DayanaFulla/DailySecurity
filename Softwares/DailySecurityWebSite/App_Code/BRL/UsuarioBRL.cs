@@ -68,5 +68,52 @@ public class UsuarioBRL
         UsuarioDSTableAdapters.UsuarioTableAdapter adapter = new UsuarioDSTableAdapters.UsuarioTableAdapter();
         adapter.UpdateUsuarioPassword(Id, encriptada);
     }
+
+    public static void UpdateEstado(int UsuarioId)
+    {
+        if (UsuarioId <= 0)
+            throw new ArgumentException("valores no validos");
+
         
+        UsuarioDSTableAdapters.UsuarioTableAdapter adapter = new UsuarioDSTableAdapters.UsuarioTableAdapter();
+        adapter.UpdateEstadoEsperaUsuario(UsuarioId);
+    }
+
+
+    public static String EncriptarPassword(string contraseña)
+    {
+        if (string.IsNullOrEmpty(contraseña))
+            throw new ArgumentException("Valor no válido");
+
+        string encriptada = EncriptarClass.Encriptar(contraseña);
+        return encriptada;
+    }
+
+    public static int InsertarUsuario(Usuario obj)
+    {
+        int? idUsuario = 0;
+        if (obj == null)
+        {
+            throw new ArgumentException("El usuario no debe ser nulo");
+        }
+
+        UsuarioDSTableAdapters.UsuarioTableAdapter adapter = new UsuarioDSTableAdapters.UsuarioTableAdapter();
+        adapter.Insert(obj.Nombre, obj.Apellido, obj.Telefono, obj.Correo, obj.Contrasena, ref idUsuario);
+        if (idUsuario == 0)
+        {
+            throw new ArgumentException("Error al insertar un nuevo usuario");
+        }
+
+        return idUsuario.Value;
+    }
+
+    public static void DeleteUsuario(int UsuarioId)
+    {
+        if (UsuarioId <= 0)
+            throw new ArgumentException("Valores no validos");
+    
+        UsuarioDSTableAdapters.UsuarioTableAdapter adapter = new UsuarioDSTableAdapters.UsuarioTableAdapter();
+        adapter.Delete(UsuarioId);
+    }
+
 }

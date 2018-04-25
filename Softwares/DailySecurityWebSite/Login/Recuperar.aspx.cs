@@ -11,6 +11,7 @@ using System.Net;
 
 public partial class Login_Recuperar : System.Web.UI.Page
 {
+    string puerto = ConfigurationManager.AppSettings["puerto"].ToString();
     protected void Page_Load(object sender, EventArgs e)
     {
         if (IsPostBack)
@@ -80,7 +81,7 @@ public partial class Login_Recuperar : System.Web.UI.Page
         body = body + "<h6 style = \"margin -left:5px;margin-right:5px; font-family:Calibri; font-size:15px; margin-top: 0px;margin-bottom: 5px;\" > Gracias por solicitar su servicio de<Strong> Recuperación de Contraseña</Strong> enseguida estara el link para que pueda personalizar nuevamente su contraseña:</h6>";
         body = body + "<h6 style = \"margin -left:5px;margin-right:5px; font-family:Calibri; font-size:15px; margin-top: 0px;margin-bottom: 5px; font-size: 10px;\" > Copie este codigo en el enlace de abajo:" + codigo + "</h6>";
         body = body + "<div style = \"text -align: center; margin-bottom: 5px;\" >";
-        body = body + "<a style= \"align -content: center; font-family:Calibri; font-size:15px; text-decoration: none;\" href= \"http://localhost:4667/Login/CodigoRecuperacion.aspx?IdUser=" + UsuarioId+"\">   Enlace Aquí</a>";
+        body = body + "<a style= \"align -content: center; font-family:Calibri; font-size:15px; text-decoration: none;\" href= \"http://localhost:"+puerto+"/Login/CodigoRecuperacion.aspx?IdUser=" + UsuarioId+"\">   Enlace Aquí</a>";
         body = body + "</div>";
         body = body + "</div>";
         body = body + "</body>";
@@ -93,7 +94,7 @@ public partial class Login_Recuperar : System.Web.UI.Page
 
             mail.From = new MailAddress(correo, "Daily Security");
             mail.To.Add(email);
-            mail.Subject = "Resuperación de Contraseña";
+            mail.Subject = "Recuperación de Contraseña";
             mail.IsBodyHtml = true;
             mail.Body = body;
             SmtpServer.Port = 587;
