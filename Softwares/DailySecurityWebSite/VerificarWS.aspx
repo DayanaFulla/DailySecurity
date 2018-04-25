@@ -30,7 +30,7 @@
             </div>
             
             <div id="DivCambio" runat="server">
-                <asp:Button ID="btnConfirmar" runat="server" Text="Confirmar" class="btn btn-primary" OnClick="Redireccionar_click"  style="margin-right: auto; margin-left:auto;");  />
+                <asp:Button ID="btnConfirmar" runat="server" Text="Confirmar" OnClick="Redireccionar_click" class="btn btn-primary"  style="margin-right: auto; margin-left:auto;"  />
             </div>
             
         </div>

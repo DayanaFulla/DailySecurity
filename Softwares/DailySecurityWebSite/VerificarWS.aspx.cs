@@ -49,12 +49,12 @@ public partial class Verificacion : System.Web.UI.Page
         
         VerificacionBRL.DeleteVerificacion(ver.UsuarioId, ver.VerificacionId);
         UsuarioBRL.UpdateEstado(ver.UsuarioId);
-        Response.Write("<script language=javascript>alert('Bienvenido');window.location.href = \"http://localhost:" + puerto + "/Home.aspx\";</script>");
+        //Response.Write("<script language=javascript>alert('Bienvenido');window.location.href = \"http://localhost:" + puerto + "/Home.aspx\";</script>");
     }
 
     protected void Redireccionar_click(object sender, EventArgs e)
     {
-        Response.Redirect("~/Home.aspx");
+        Response.Write("<script language=javascript>alert('Bienvenido');window.location.href = \"http://localhost:" + puerto + "/Home.aspx\";</script>");
     }
 
 
