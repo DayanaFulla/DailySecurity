@@ -29,21 +29,24 @@
             <div class="row">
                <div class="rounded mx-auto d-block">
                    <h1 class="h3 mb-3 font-weight-normal">Ingresar</h1>
+                    <asp:Label ID="messageError" runat="server" ForeColor="Red" Visible="false" style="margin-bottom: 10px"></asp:Label>
+        <br>
                    <div class="form-group">
                     <label for="exampleInput1" class="">Correo Electrónico</label>
-                    <asp:TextBox TextMode="email" class="form-control" id="exampleInput1" runat="server"/>
+                    <asp:TextBox TextMode="email" class="form-control" id="tbEmail" runat="server"/>
                     <span class="bmd-help">Correo con el que se registro</span>
                    </div>
                    <div class="form-group">
                     <label for="contrasena" class="label-floating">Contraseña</label>
-                    <asp:TextBox TextMode="Password" class="form-control" id="contrasena" runat="server"/>
+                    <asp:TextBox TextMode="Password" class="form-control" id="tbContrasena" runat="server"/>
                     <span class="bmd-help">Contraseña con las que se registro</span>
                    </div>
                    
                    <div>
                        <asp:HyperLink runat="server" NavigateUrl="~/Login/Recuperar.aspx">¿Olvidaste tu contraseña?</asp:HyperLink>
                    </div>
-                   <asp:Button class="btn btn-primary" OnClientClick="submit" runat="server" Text="Ingresar"/>
+                   <asp:Button class="btn btn-primary" OnClientClick="submit" runat="server" Text="Ingresar" ID="loggear" OnClick="loggear_Click" />
+
                </div>
             </div>
         </div>
