@@ -89,6 +89,15 @@ public class UsuarioBRL
         return encriptada;
     }
 
+    public static String DesEncriptarPassword(string contraseña)
+    {
+        if (string.IsNullOrEmpty(contraseña))
+            throw new ArgumentException("Valor no válido");
+
+        string desEncriptada = EncriptarClass.Desencriptar(contraseña);
+        return desEncriptada;
+    }
+
     public static int InsertarUsuario(Usuario obj)
     {
         int? idUsuario = 0;
