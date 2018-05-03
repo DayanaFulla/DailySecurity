@@ -24,21 +24,21 @@
 
 </head>
 <body class="text-center">
-    <form runat="server">
+    <form runat="server" >
         <div class="container">
             <div class="row">
-               <div class="rounded mx-auto d-block">
+               <div class="rounded mx-auto d-block" style ="  margin-right: auto; margin-left:auto; width: 400px;border: 3px solid #9D00AE; background-color: white; box-shadow: 0px 0px 69px -4px rgba(169,173,185,1); height: 450px; margin-top: 50px;" >
                    <h1 class="h3 mb-3 font-weight-normal">Ingresar</h1>
                     <asp:Label ID="messageError" runat="server" ForeColor="Red" Visible="false" style="margin-bottom: 10px"></asp:Label>
         <br>
-                   <div class="form-group">
+                   <div class="form-group" style ="margin:30px" >
                     <label for="exampleInput1" class="">Correo Electrónico</label>
-                    <asp:TextBox TextMode="email" class="form-control" id="tbEmail" runat="server"/>
+                    <asp:TextBox TextMode="email" class="form-control" id="tbEmail" runat="server"  style ="padding:10px"/>
                     <span class="bmd-help">Correo con el que se registro</span>
                    </div>
-                   <div class="form-group">
+                   <div class="form-group" style ="margin:30px">
                     <label for="contrasena" class="label-floating">Contraseña</label>
-                    <asp:TextBox TextMode="Password" class="form-control" id="tbContrasena" runat="server"/>
+                    <asp:TextBox TextMode="Password" class="form-control" id="tbContrasena" runat="server"  style ="padding:10px"/>
                     <span class="bmd-help">Contraseña con las que se registro</span>
                    </div>
                    

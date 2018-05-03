@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
@@ -26,78 +27,59 @@ public partial class Login_Default : System.Web.UI.Page
         String correoActual = tbEmail.Text;
         String contraseñaActual = tbContrasena.Text;
 
-        if (String.IsNullOrWhiteSpace(correoActual)) {
-            messageError.Text = "Campo Vacio";
-            messageError.Visible = true;
+        if (String.IsNullOrWhiteSpace(correoActual) || String.IsNullOrWhiteSpace(contraseñaActual))  {
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('El campo del correo o contraseña no debe estar vacio')", true);
         }
         else
         {
             Usuario userActual = UsuarioBRL.GetUsuarioByEmail(correoActual);
-            if  (userActual!=null)
-             {
+            if (userActual != null)
+            {
                 String desEncriptada = UsuarioBRL.DesEncriptarPassword(userActual.Contrasena);
                 if (desEncriptada.Equals(contraseñaActual))
                 {
-                        int usuarioActualID = userActual.UsuarioID;
-                        Model.Verificacion objActual = VerificacionBRL.GetVerificacionByUsuarioId(usuarioActualID);
-
-                    if (objActual != null)
+                    if (userActual.EstadoCuenta)
                     {
-                        objActual = verify(correoActual);
-                        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Es necesario que verifique su correo')", true);
-                        Boolean IsVerified = objActual.Estado;
-
-                            if (objActual.Estado)
-                            {
-                                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('aun no ha verificado su cuenta, por favor revise su correo!')", true);
-                                actualizarVerificacion(correoActual);
-                            }
-                            else
-                            {
-                                Response.Redirect("../Home.aspx");
-                            }
+                        Response.Redirect("../Home.aspx");
                     }
                     else
-                    {
-                        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('No existe Verificacion  "+objActual.UsuarioId+"')", true);
+                    {//si el estado de cuenta est false
+                        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Su cuenta no se encuentra verificada, Revise su correo por favor!')", true);
+                        Verificacion verificacion = VerificacionBRL.GetVerificacionByUsuarioId(userActual.UsuarioID);
+                        if (verificacion!=null)
+                        {
+                            Enviar(correoActual);
+
+                        }
+                       
                     }
                 }
                 else
-                    {
+                { // la contraseña escrita no coincide con la guardad
                     ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Datos Incorrectos')", true);
                 }
             }
             else
-            {
+            { // usuario null
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Datos Incorrectos')", true);
+
             }
         }
 
 
     }
 
-    private void actualizarVerificacion(string correoActual)
-    {
-       
-    }
 
-    private void mostrarError()
-    {
-        messageError.Text = "El correo no esta registrado";
-        messageError.Visible = true;
-    }
-
-
-    protected Model.Verificacion verify(String email)
+    protected void Enviar(String email)
     {
         Usuario usuario = UsuarioBRL.GetUsuarioByEmail(email);
-        Model.Verificacion obj=null;
+
         try
         {
             System.Diagnostics.Debug.WriteLine("Entro Primero");
             int idVerificacion = VerificacionBRL.InsertVerificacion(usuario.Correo);
 
-            obj = VerificacionBRL.GetVerificacionById(idVerificacion);
+            Model.Verificacion obj = VerificacionBRL.GetVerificacionById(idVerificacion);
             //UsuarioBRL.UpdateUsuarioPassword(usuario.UsuarioID, obj.Codigo);
 
             EnviarEmail(email, obj.CodigoVerificacion, usuario.UsuarioID, idVerificacion);
@@ -107,9 +89,8 @@ public partial class Login_Default : System.Web.UI.Page
         {
 
         }
-        return obj;
-    }
 
+    }
 
 
 

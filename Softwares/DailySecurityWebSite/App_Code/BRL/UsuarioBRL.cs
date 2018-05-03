@@ -125,4 +125,12 @@ public class UsuarioBRL
         adapter.Delete(UsuarioId);
     }
 
+    public static bool getEstadoUsuarioByID(int userID) {
+
+        if( userID <= 0)
+            throw new ArgumentException("Valores no validos");
+
+        return  GetUsuarioById(userID).EstadoCuenta;
+    }
+
 }

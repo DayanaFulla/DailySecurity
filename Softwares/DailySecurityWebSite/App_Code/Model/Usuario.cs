@@ -22,4 +22,6 @@ public class Usuario
     public string Telefono { get; set; }
     public string Correo { get; set; }
     public string Contrasena { get; set; }
+    public bool EstadoEspera { get; set; }
+    public bool EstadoCuenta { get; set; }
 }
