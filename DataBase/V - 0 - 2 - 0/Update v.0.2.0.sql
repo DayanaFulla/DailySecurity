@@ -13,7 +13,7 @@ GO
 -- Create date: 2018-05-02
 -- Description:	Obtiene el Estado de cuenta del Usuario
 -- =============================================
-CREATE PROCEDURE [dbo].[USER_GetEstadoUsuarioByID]
+CREATE PROCEDURE [dbo].[USER_GetEstadoEsperaUsuarioByID]
 	@UsuarioIDp int
 	 
 AS
@@ -21,7 +21,7 @@ BEGIN
 	
 	SET NOCOUNT ON;
 
-	SELECT EstadoCuenta 
+	SELECT EstadoEspera 
 	FROM tbl_Usuario
 	WHERE UsuarioID=@UsuarioIDp;
 
