@@ -15,46 +15,43 @@ public partial class Verificacion : System.Web.UI.Page
     {
         codigo = Convert.ToString(Request.QueryString["codigo"]);
         System.Diagnostics.Debug.WriteLine("Entro Primero: " + codigo);
+        
         if (string.IsNullOrEmpty(codigo))
         {
-            Response.Write("<script language=javascript>alert('Sin Usuario');window.location.href = \"http://localhost:"+puerto+"/Home.aspx\";</script>");
+            Response.Write("<script language=javascript>alert('Sin Usuario');window.location.href = \"http://localhost:"+puerto+"/Login/Login.aspx\";</script>");
             return;
         }
+        VerificarExistencia(codigo);
+  }
 
-        
-
-    }
-
-    protected void VerificarExistencia(object sender, EventArgs e)
+    protected void VerificarExistencia(String codigo)
     {
-
         Model.Verificacion ver = VerificacionBRL.GetVerificacionByCodigo(codigo);
-
         if (ver == null)
         {
             System.Diagnostics.Debug.WriteLine("Esto" + codigo);
-            Response.Write("<script language=javascript>alert('No existe');window.location.href = \"http://localhost:" + puerto + "/Home.aspx\";</script>");
-            return;
+            Response.Write("<script language=javascript>alert('Codigo invalido o No existe');window.location.href = \"http://localhost:" + puerto + "/Login/Login.aspx\";</script>");
         }
         int comparacion = DateTime.Compare(ver.HorarioFin, DateTime.Now);
 
-        if (!ver.Estado == false || comparacion <= 0)
+        if (ver.Estado == true || comparacion <= 0)
         {
 
-            VerificacionBRL.DeleteVerificacion(ver.UsuarioId, ver.VerificacionId);
-            UsuarioBRL.DeleteUsuario(ver.UsuarioId);
-            Response.Write("<script language=javascript>alert('Vuelva a solicitar el servicio'); window.location.href = \"http://localhost:" + puerto + "/VerificarWS.aspx\";</script>");
+            VerificacionBRL.UpdateVerificacion(ver.UsuarioId, ver.VerificacionId, false);
+            UsuarioBRL.UpdateEstado(ver.UsuarioId);
             return;
         }
-        
-        VerificacionBRL.DeleteVerificacion(ver.UsuarioId, ver.VerificacionId);
-        UsuarioBRL.UpdateEstado(ver.UsuarioId);
-        //Response.Write("<script language=javascript>alert('Bienvenido');window.location.href = \"http://localhost:" + puerto + "/Home.aspx\";</script>");
+        else
+        {
+            Response.Write("<script language=javascript>alert('Codigo invalido, Vuelva a solicitar el servicio'); window.location.href = \"http://localhost:" + puerto + "/Login/Login.aspx\";</script>");
+
+        }
+     
     }
 
     protected void Redireccionar_click(object sender, EventArgs e)
     {
-        Response.Write("<script language=javascript>alert('Bienvenido');window.location.href = \"http://localhost:" + puerto + "/Home.aspx\";</script>");
+        Response.Redirect("/Login/Login.aspx");
     }
 
 
