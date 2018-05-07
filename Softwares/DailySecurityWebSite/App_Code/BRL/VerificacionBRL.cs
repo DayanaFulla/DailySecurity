@@ -71,7 +71,7 @@ public class VerificacionBRL
 
         System.Diagnostics.Debug.WriteLine("En Update estos datos: " + UsuarioId + " - " + VerificacionId+" - "+estado);
         VerificacionDSTableAdapters.VERIFICACIONTableAdapter adapter = new VerificacionDSTableAdapters.VERIFICACIONTableAdapter();
-        adapter.Update(UsuarioId, VerificacionId, false);
+        adapter.UpdateVerificacion(UsuarioId, VerificacionId, false);
     }
 
     public static void DeleteVerificacion(int UsuarioId, int VerificacionId)
@@ -136,7 +136,7 @@ public class VerificacionBRL
 
     public static Model.Verificacion GetVerificacionByCodigo(String codigo)
     {
-        if (codigo !=null)
+        if (codigo ==null)
             throw new ArgumentException("Id con valor invalido");
 
         VerificacionDSTableAdapters.VERIFICACIONTableAdapter adapter = new VerificacionDSTableAdapters.VERIFICACIONTableAdapter();
@@ -149,7 +149,19 @@ public class VerificacionBRL
         return obj;
     }
 
+    public static bool GetEstadoVerificacionByVerfificacionID(int verificacionId)
+    {
+        Model.Verificacion obj = GetVerificacionById(verificacionId);
+        return obj.Estado;
+    }
 
+    public static bool ExisteVerificacion(int usuarioID)
+    {
+        Model.Verificacion verificacion = GetVerificacionByUsuarioId(usuarioID);
+        if (verificacion != null)
+            return true;
+        return false;
+    }
 
     private static String GetCodigo()
     {
