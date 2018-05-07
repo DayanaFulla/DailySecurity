@@ -38,20 +38,23 @@ public partial class Login_Default : System.Web.UI.Page
                 String desEncriptada = UsuarioBRL.DesEncriptarPassword(userActual.Contrasena);
                 if (desEncriptada.Equals(contraseñaActual))
                 {
-                    if (userActual.EstadoCuenta)
-                    {
-                        Response.Redirect("../Home.aspx");
+                    bool estadoEsperaUsuario = UsuarioBRL.getEstadoEsperaUsuarioByID(userActual.UsuarioID);
+                    bool existeVer = VerificacionBRL.ExisteVerificacion(userActual.UsuarioID);
+                    Verificacion ver = VerificacionBRL.GetVerificacionByUsuarioId(userActual.UsuarioID);
+
+                    if (userActual.EstadoEspera == true)
+                    {  // 1 para entrar true , 0 salta false
+                        Response.Redirect("~/Home.aspx");
                     }
                     else
-                    {//si el estado de cuenta est false
-                        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Su cuenta no se encuentra verificada, Revise su correo por favor!')", true);
-                        Verificacion verificacion = VerificacionBRL.GetVerificacionByUsuarioId(userActual.UsuarioID);
-                        if (verificacion!=null)
-                        {
+                    {//si el estado de cuenta esta false
+                        if (existeVer == false)
+                         {
                             Enviar(correoActual);
-
+                            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Error 2.0," +
+                                "Revise su correo por favor!')", true);
+                           // Response.Redirect("~/Login/login.aspx");
                         }
-                       
                     }
                 }
                 else
