@@ -39,7 +39,9 @@ public class UsuarioBRL
             Apellido = row.Apellido,
             Telefono = row.Telefono,
             Correo = row.Correo,
-            Contrasena = row.Contraseña
+            Contrasena = row.Contraseña,
+            EstadoEspera = row.EstadoEspera, 
+            EstadoCuenta = row.EstadoCuenta
         };
     }
 
@@ -125,12 +127,16 @@ public class UsuarioBRL
         adapter.Delete(UsuarioId);
     }
 
-    public static bool getEstadoUsuarioByID(int userID) {
+    public static bool getEstadoEsperaUsuarioByID(int userID) {
 
-        if( userID <= 0)
+        if (userID <= 0)
+        {
             throw new ArgumentException("Valores no validos");
 
-        return  GetUsuarioById(userID).EstadoCuenta;
+        }
+
+        Usuario user = GetUsuarioById(userID);
+        return user.EstadoEspera;
     }
 
 }
