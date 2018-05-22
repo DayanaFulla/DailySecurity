@@ -14,14 +14,13 @@ using DailyDB.App_Code.Model;
 public partial class Login_CodigoRecuperacion : System.Web.UI.Page
 {
     string idUser = "";
-    string puerto = ConfigurationManager.AppSettings["puerto"].ToString();
     protected void Page_Load(object sender, EventArgs e)
     {
         idUser = Convert.ToString(Request.QueryString["IdUser"]);
         DivCambio.Visible = false;
         if (string.IsNullOrEmpty(idUser))
         {
-            Response.Write("<script language=javascript>alert('Sin Usuario');window.location.href = \"http://localhost:" + puerto + "/Home.aspx\";</script>");
+            Response.Write("<script language=javascript>alert('Sin Usuario');window.location.href = \"~/../Home.aspx\";</script>");
             return;
         }
 
@@ -38,7 +37,7 @@ public partial class Login_CodigoRecuperacion : System.Web.UI.Page
         if (recup == null)
         {
             System.Diagnostics.Debug.WriteLine("Esto" + codigo);
-            Response.Write("<script language=javascript>alert('No existe');window.location.href = \"http://localhost:" + puerto + "/Home.aspx\";</script>");
+            Response.Write("<script language=javascript>alert('No existe');window.location.href = \"~/../Home.aspx\";</script>");
             return;
         }
         int comparacion = DateTime.Compare(recup.HorarioFin, DateTime.Now);
@@ -46,7 +45,7 @@ public partial class Login_CodigoRecuperacion : System.Web.UI.Page
         if (!recup.Estado.Equals("P") || comparacion <= 0)
         {
             RecuperacionBRL.DeleteRecuperacion(recup.ResuperacionId);
-            Response.Write("<script language=javascript>alert('Vuelva a solicitar el servicio'); window.location.href = \"http://localhost:" + puerto + "/Login/Recuperar.aspx\";</script>");
+            Response.Write("<script language=javascript>alert('Vuelva a solicitar el servicio'); window.location.href = \"~/Login/Recuperar.aspx\";</script>");
             return;
         }
         RecuperacionBRL.DeleteRecuperacion(recup.ResuperacionId);
