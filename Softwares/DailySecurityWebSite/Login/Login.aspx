@@ -9,7 +9,7 @@
     <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png" />
     <link rel="icon" type="image/png" href="../assets/img/favicon.png" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    
+
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
     <!-- Bootstrap core CSS     -->
@@ -19,39 +19,49 @@
     <!--  CSS for Demo Purpose, don't include it in your project     -->
     <link href="../assets/css/demo.css" rel="stylesheet" />
     <!--     Fonts and icons     -->
-    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet"/>
-    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'/>
-
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet" />
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css' />
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Asul|Baloo+Bhaina|Cantora+One|Corben|Gabriela|Gurajada|Imprima|Katibeh|Sansita');
+    </style>
+    <link href="../assets/fonts/fuentes.css" rel="stylesheet" />
+    <link href="../assets/css/extra.css" rel="stylesheet" />
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#myModal").modal('show');
+        });
+    </script>
 </head>
-<body class="text-center">
-    <form runat="server" >
+<body class="text-center body-daily">
+
+    <form runat="server">
         <div class="container">
             <div class="row">
-               <div class="rounded mx-auto d-block" style ="  margin-right: auto; margin-left:auto; width: 400px;border: 3px solid #9D00AE; background-color: white; box-shadow: 0px 0px 69px -4px rgba(169,173,185,1); height: 450px; margin-top: 50px;" >
-                   <h1 class="h3 mb-3 font-weight-normal">Ingresar</h1>
-                    <asp:Label ID="messageError" runat="server" ForeColor="Red" Visible="false" style="margin-bottom: 10px"></asp:Label>
-        <br>
-                   <div class="form-group" style ="margin:30px" >
-                    <label for="exampleInput1" class="">Correo Electrónico</label>
-                    <asp:TextBox TextMode="email" class="form-control" id="tbEmail" runat="server"  style ="padding:10px"/>
-                    <span class="bmd-help">Correo con el que se registro</span>
-                   </div>
-                   <div class="form-group" style ="margin:30px">
-                    <label for="contrasena" class="label-floating">Contraseña</label>
-                    <asp:TextBox TextMode="Password" class="form-control" id="tbContrasena" runat="server"  style ="padding:10px"/>
-                    <span class="bmd-help">Contraseña con las que se registro</span>
-                   </div>
-                   
-                   <div>
-                       <asp:HyperLink runat="server" NavigateUrl="~/Login/Recuperar.aspx">¿Olvidaste tu contraseña?</asp:HyperLink>
-                   </div>
-                   <asp:Button class="btn btn-primary" OnClientClick="submit" runat="server" Text="Ingresar" ID="loggear" OnClick="loggear_Click" />
+                <div class="rounded mx-auto d-block fondito">
+                    <h1 class="h3 mb-3" id="titulo-daily1">INICIAR SESIÓN</h1>
+                    <asp:Label ID="messageError" runat="server" ForeColor="Red" Visible="false" Style="margin-bottom: 10px"></asp:Label>
+                    <div class="form-group" style="margin: 30px">
+                        <label for="exampleInput1" id="lb-daily2">Correo Electrónico</label>
+                        <asp:TextBox TextMode="email" class="form-control" ID="tbEmail" runat="server" Style="text-align: center; margin-right: auto; margin-left: auto;" />
+                        <span class="bmd-help">Correo con el que se registro</span>
+                    </div>
+                    <div class="form-group" style="margin: 30px">
+                        <label for="contrasena" id="lb-daily1">Contraseña</label>
+                        <asp:TextBox TextMode="Password" class="form-control" ID="tbContrasena" runat="server" Style="text-align: center; margin-right: auto; margin-left: auto;" />
+                        <span class="bmd-help">Contraseña con las que se registro</span>
+                    </div>
+                    <div>
+                        <asp:HyperLink runat="server" CssClass="url-daily" NavigateUrl="~/Login/Recuperar.aspx">¿Olvidaste tu contraseña?</asp:HyperLink>
+                        ó
+                        <asp:HyperLink runat="server" CssClass="url-daily" NavigateUrl="~/Registrar.aspx">Registrate</asp:HyperLink>
+                    </div>
+                    <asp:Button class="btn btn-daily" OnClientClick="submit" runat="server" Text="Ingresar" ID="loggear" OnClick="loggear_Click" data-toggle="modal" data-target="#exampleModal"/>
 
-               </div>
+                </div>
             </div>
         </div>
-       
     </form>
+
 
     <!--   Core JS Files   -->
     <script src="../assets/js/jquery-3.2.1.min.js" type="text/javascript"></script>

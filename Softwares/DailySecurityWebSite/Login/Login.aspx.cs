@@ -1,16 +1,12 @@
-﻿using Model;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Configuration;
-using System.Linq;
 using System.Net.Mail;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
+using DailyDB.App_Code.BRL;
+using DailyDB.App_Code.Model;
 
 public partial class Login_Default : System.Web.UI.Page
 {
-    string puerto = ConfigurationManager.AppSettings["puerto"].ToString();
     protected void Page_Load(object sender, EventArgs e)
     {
         if (IsPostBack)
@@ -24,15 +20,19 @@ public partial class Login_Default : System.Web.UI.Page
 
     protected void loggear_Click(object sender, EventArgs e)
     {
+
+
         String correoActual = tbEmail.Text;
         String contraseñaActual = tbContrasena.Text;
 
-        if (String.IsNullOrWhiteSpace(correoActual) || String.IsNullOrWhiteSpace(contraseñaActual))  {
+        if (String.IsNullOrWhiteSpace(correoActual) || String.IsNullOrWhiteSpace(contraseñaActual))
+        {
+
             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('El campo del correo o contraseña no debe estar vacio')", true);
         }
         else
         {
-            Usuario userActual = UsuarioBRL.GetUsuarioByEmail(correoActual);
+            DailyDB.App_Code.Model.Usuario userActual = UsuarioBRL.GetUsuarioByEmail(correoActual);
             if (userActual != null)
             {
                 String desEncriptada = UsuarioBRL.DesEncriptarPassword(userActual.Contrasena);
@@ -49,11 +49,13 @@ public partial class Login_Default : System.Web.UI.Page
                     else
                     {//si el estado de cuenta esta false
                         if (existeVer == false)
-                         {
+                        {
+
+
                             Enviar(correoActual);
                             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Error 2.0," +
-                                "Revise su correo por favor!')", true);
-                           // Response.Redirect("~/Login/login.aspx");
+                              "Revise su correo por favor!')", true);
+                            Response.Redirect("~/Login/login.aspx");
                         }
                     }
                 }
@@ -82,7 +84,7 @@ public partial class Login_Default : System.Web.UI.Page
             System.Diagnostics.Debug.WriteLine("Entro Primero");
             int idVerificacion = VerificacionBRL.InsertVerificacion(usuario.Correo);
 
-            Model.Verificacion obj = VerificacionBRL.GetVerificacionById(idVerificacion);
+            Verificacion obj = VerificacionBRL.GetVerificacionById(idVerificacion);
             //UsuarioBRL.UpdateUsuarioPassword(usuario.UsuarioID, obj.Codigo);
 
             EnviarEmail(email, obj.CodigoVerificacion, usuario.UsuarioID, idVerificacion);
@@ -117,7 +119,7 @@ public partial class Login_Default : System.Web.UI.Page
         body = body + "<h3 style = \"text -align: center; font-family:Calibri; font-size:15px; margin-top: 0px;margin-bottom: 5px;\" > <strong> El link de verificacion se encuentra aquí </strong></h3>";
         body = body + "<h6 style = \"margin -left:5px;margin-right:5px; font-family:Calibri; font-size:15px; margin-top: 0px;margin-bottom: 5px;\" > Gracias por registrarse, enseguida estara el link para que pueda verificar su registro</h6>";
         body = body + "<div style = \"text -align: center; margin-bottom: 5px;\" >";
-        body = body + "<a style= \"align -content: center; font-family:Calibri; font-size:15px; text-decoration: none;\" href= \"http://localhost:" + puerto + "/VerificarWS.aspx?codigo=" + codigo + "\">   Enlace Aquí</a>";
+        body = body + "<a style= \"align -content: center; font-family:Calibri; font-size:15px; text-decoration: none;\" href= \"http://" + Request.Url.Host + ":" + Request.Url.Port + "/VerificarWS.aspx?codigo=" + codigo + "\">   Enlace Aquí</a>";
         body = body + "</div>";
         body = body + "</div>";
         body = body + "</body>";

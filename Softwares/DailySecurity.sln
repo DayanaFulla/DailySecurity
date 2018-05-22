@@ -7,6 +7,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "DailySecurityWebSite", "htt
 	ProjectSection(WebsiteProperties) = preProject
 		UseIISExpress = "true"
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5.2"
+		ProjectReferences = "{a41fa84f-d21e-40f2-bc11-fb146777c1f6}|DailyDB.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/localhost_4667"
 		Debug.AspNetCompiler.PhysicalPath = "DailySecurityWebSite\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_4667\"
@@ -24,13 +25,22 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "DailySecurityWebSite", "htt
 		SlnRelativePath = "DailySecurityWebSite\"
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DailyDB", "DailyDB\DailyDB.csproj", "{A41FA84F-D21E-40F2-BC11-FB146777C1F6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{49116F4E-5887-48D6-8A6B-83EFA93D864F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{49116F4E-5887-48D6-8A6B-83EFA93D864F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49116F4E-5887-48D6-8A6B-83EFA93D864F}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{49116F4E-5887-48D6-8A6B-83EFA93D864F}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{A41FA84F-D21E-40F2-BC11-FB146777C1F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A41FA84F-D21E-40F2-BC11-FB146777C1F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A41FA84F-D21E-40F2-BC11-FB146777C1F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A41FA84F-D21E-40F2-BC11-FB146777C1F6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

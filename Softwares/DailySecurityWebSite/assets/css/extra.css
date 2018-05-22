@@ -1,0 +1,88 @@
+
+#navegador img{
+    width: 50px;
+    margin-top: 0px;
+    color:#5d1669;
+    background-color:#5d1669;
+}
+#navegador a h1{
+    margin-left:50px;
+    font-family: ChauPhilomeneOne-Italic;
+    font-size:30px;
+    margin-top: -40px;
+    color:white;
+}
+.navbar-nav {
+    margin-left:40%;
+}
+.navbar-nav .urlRedirect{
+    color: white;
+    margin-left:15px;
+    margin-right:30px;
+}
+.navbar-nav .urlRedirect h6 i{
+    margin-top:0px;
+    margin-left:-30px;
+    position:absolute;
+}
+.body-daily{
+    background-color:#f8e9fb;
+}
+
+h1[id*="titulo"]{
+    color:#25082b;
+    font-weight: bold;
+    font-family: 'Imprima';
+    font-size:30px;
+}
+
+.fondito{
+    background-color: #f1d4f7;
+    margin-right: auto;
+    margin-left: auto; 
+    width: 400px; 
+    border: 3px solid #701881; 
+    box-shadow: 0px 0px 69px -4px rgba(169,173,185,1); 
+    height: auto; 
+    margin-top: 50px;
+}
+.h4-daily{
+    font-size:12px;
+    color:#701881;
+    font-family:Arial;
+}
+label[id*="lb-daily"]{
+    color: #25082b;
+    font-family: 'Imprima';
+    font-size:15px;
+    font-weight: bold;
+}
+.bmd-help{
+    color:#a824c2;
+    font-size: 11px;
+}
+.btn-daily{
+    background-color: #701881;
+    margin-bottom: 30px;
+}
+.url-daily{
+    color: #701881;
+    font-weight: bold;
+}
+.text-muted{
+    font-size:12px;
+    color: #4a1056;
+    margin-bottom:-15px;
+}
+label[id*="regi"]{
+    /*color: #25082b;*/
+    font-family: 'Imprima';
+    font-size:15px;
+    font-weight: bold;
+    padding-left:20px;
+    color: black;
+}
+.input-daily{
+    border-bottom: 1px solid #25082b;
+    width:200px;
+}

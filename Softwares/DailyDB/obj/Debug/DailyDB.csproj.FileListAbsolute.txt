@@ -1,0 +1,6 @@
+D:\Sistemas\9._I-2018\Ing._Software_3\DailySecurity\Softwares\DailyDB\obj\Debug\DailyDB.csprojResolveAssemblyReference.cache
+D:\Sistemas\9._I-2018\Ing._Software_3\DailySecurity\Softwares\DailyDB\bin\Debug\DailyDB.dll.config
+D:\Sistemas\9._I-2018\Ing._Software_3\DailySecurity\Softwares\DailyDB\bin\Debug\DailyDB.dll
+D:\Sistemas\9._I-2018\Ing._Software_3\DailySecurity\Softwares\DailyDB\bin\Debug\DailyDB.pdb
+D:\Sistemas\9._I-2018\Ing._Software_3\DailySecurity\Softwares\DailyDB\obj\Debug\DailyDB.dll
+D:\Sistemas\9._I-2018\Ing._Software_3\DailySecurity\Softwares\DailyDB\obj\Debug\DailyDB.pdb

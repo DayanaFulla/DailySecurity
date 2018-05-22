@@ -1,15 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Configuration;
-using System.Linq;
 using System.Net.Mail;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
+
+using DailyDB.App_Code.BRL;
+using DailyDB.App_Code.Model;
 
 public partial class Registrar : System.Web.UI.Page
 {
-    string puerto = ConfigurationManager.AppSettings["puerto"].ToString();
+
     protected void Page_Load(object sender, EventArgs e)
     {
 
@@ -18,11 +17,11 @@ public partial class Registrar : System.Web.UI.Page
     protected void btnGuardar_Click(object sender, EventArgs e)
     {
         //USUARIO
-        string US_nombre = txtNombre.Value;
-        string US_apellido = txtApellido.Value;
-        string US_telefono = txtTelefono.Value;
-        string US_email = txtEmail.Value;
-        string US_contraseña = txtContrasena.Value;
+        string US_nombre = txtNombre.Text;
+        string US_apellido = txtApellido.Text;
+        string US_telefono = txtTelefono.Text;
+        string US_email = txtEmail.Text;
+        string US_contraseña = txtContrasena.Text;
 
         if (string.IsNullOrEmpty(US_nombre))
         {
@@ -108,7 +107,7 @@ public partial class Registrar : System.Web.UI.Page
             System.Diagnostics.Debug.WriteLine("Entro Primero");
             int idVerificacion = VerificacionBRL.InsertVerificacion(usuario.Correo);
 
-            Model.Verificacion obj = VerificacionBRL.GetVerificacionById(idVerificacion);
+            DailyDB.App_Code.Model.Verificacion obj = VerificacionBRL.GetVerificacionById(idVerificacion);
             //UsuarioBRL.UpdateUsuarioPassword(usuario.UsuarioID, obj.Codigo);
 
             EnviarEmail(email, obj.CodigoVerificacion, usuario.UsuarioID, idVerificacion);
@@ -144,7 +143,7 @@ public partial class Registrar : System.Web.UI.Page
         body = body + "<h3 style = \"text -align: center; font-family:Calibri; font-size:15px; margin-top: 0px;margin-bottom: 5px;\" > <strong> El link de verificacion se encuentra aquí </strong></h3>";
         body = body + "<h6 style = \"margin -left:5px;margin-right:5px; font-family:Calibri; font-size:15px; margin-top: 0px;margin-bottom: 5px;\" > Gracias por registrarse, enseguida estara el link para que pueda verificar su registro</h6>";
         body = body + "<div style = \"text -align: center; margin-bottom: 5px;\" >";
-        body = body + "<a style= \"align -content: center; font-family:Calibri; font-size:15px; text-decoration: none;\" href= \"http://localhost:"+puerto+"/VerificarWS.aspx?codigo=" + codigo + "\">   Enlace Aquí</a>";
+        body = body + "<a style= \"align -content: center; font-family:Calibri; font-size:15px; text-decoration: none;\" href= \"http://" + Request.Url.Host + ":" + Request.Url.Port + "/VerificarWS.aspx?codigo=" + codigo + "\">   Enlace Aquí</a>";
         body = body + "</div>";
         body = body + "</div>";
         body = body + "</body>";

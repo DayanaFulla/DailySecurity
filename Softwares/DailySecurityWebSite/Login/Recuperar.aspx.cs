@@ -8,10 +8,11 @@ using System.Configuration;
 using System.Net.Mail;
 using System.Net;
 
+using DailyDB.App_Code.BRL;
+using DailyDB.App_Code.Model;
 
 public partial class Login_Recuperar : System.Web.UI.Page
 {
-    string puerto = ConfigurationManager.AppSettings["puerto"].ToString();
     protected void Page_Load(object sender, EventArgs e)
     {
         if (IsPostBack)
@@ -76,12 +77,12 @@ public partial class Login_Recuperar : System.Web.UI.Page
         body = body + "<title></title>";
         body = body + "</head>";
         body = body + "<body>";
-        body = body + "<div class=\"text -center\" style=\"margin-right: auto; margin-left:auto; width: 400px;border: 3px solid #9D00AE; background-color: white; margin-top: 50px;\">";
+        body = body + "<div class=\"text -center\" style=\"font-size:18px;margin-right: auto; margin-left:auto; width: 400px;border: 3px solid #9D00AE; background-color: white; margin-top: 50px;\">";
         body = body + "<h3 style = \"text -align: center; font-family:Calibri; font-size:15px; margin-top: 0px;margin-bottom: 5px;\" > <strong> Su nueva contraseña esta aqui: </strong></h3>";
         body = body + "<h6 style = \"margin -left:5px;margin-right:5px; font-family:Calibri; font-size:15px; margin-top: 0px;margin-bottom: 5px;\" > Gracias por solicitar su servicio de<Strong> Recuperación de Contraseña</Strong> enseguida estara el link para que pueda personalizar nuevamente su contraseña:</h6>";
         body = body + "<h6 style = \"margin -left:5px;margin-right:5px; font-family:Calibri; font-size:15px; margin-top: 0px;margin-bottom: 5px; font-size: 10px;\" > Copie este codigo en el enlace de abajo:" + codigo + "</h6>";
         body = body + "<div style = \"text -align: center; margin-bottom: 5px;\" >";
-        body = body + "<a style= \"align -content: center; font-family:Calibri; font-size:15px; text-decoration: none;\" href= \"http://localhost:"+puerto+"/Login/CodigoRecuperacion.aspx?IdUser=" + UsuarioId+"\">   Enlace Aquí</a>";
+        body = body + "<a style= \"padding-left:20px;align -content: center; font-family:Calibri; font-size:15px; text-decoration: none;\" href= \"http://"+ Request.Url.Host + ":" + Request.Url.Port+"/Login/CodigoRecuperacion.aspx?IdUser=" + UsuarioId+"\">   Enlace Aquí</a>";
         body = body + "</div>";
         body = body + "</div>";
         body = body + "</body>";
@@ -102,6 +103,7 @@ public partial class Login_Recuperar : System.Web.UI.Page
             SmtpServer.EnableSsl = true;
             SmtpServer.Send(mail);
             System.Diagnostics.Debug.WriteLine("Mensaje enviado");
+            Response.Redirect("../Home.aspx");
         }
         catch (Exception ex)
         {

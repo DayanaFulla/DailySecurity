@@ -2,9 +2,14 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
+using System.Net;
+using System.Net.Sockets;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+
+using DailyDB.App_Code.BRL;
+using DailyDB.App_Code.Model;
 
 public partial class Login_CodigoRecuperacion : System.Web.UI.Page
 {
@@ -57,10 +62,9 @@ public partial class Login_CodigoRecuperacion : System.Web.UI.Page
         String SamePasswo = TxtSamePassword.Text;
 
         if (NewPasswo.Equals(SamePasswo))
-        {
-
+        {   
             UsuarioBRL.UpdateUsuarioPassword(UserID, NewPasswo);
-            btnConfirmar.Attributes["onclick"] = "alert('Cambio Exitoso'); window.location.href = \"http://localhost:" + puerto + "/Login/Login.aspx\";";
+            btnConfirmar.Attributes["onclick"] = "alert('Cambio Exitoso'); window.location.href = \"~/Login.aspx\";";
         }
         else
         {

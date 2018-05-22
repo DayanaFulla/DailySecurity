@@ -1,0 +1,64 @@
+@font-face{
+    font-family: Aladin;
+    src: url(fuentes/Aladin-Regular.ttf);
+}
+@font-face{
+    font-family: BerkshireSwash;
+    src: url(fuentes/BerkshireSwash-Regular.ttf);
+}
+@font-face{
+    font-family: aclonica;
+    src: url(fuentes/Aclonica.ttf);
+}
+@font-face{
+    font-family: ChauPhilomeneOne-Italic;
+    src: url(fuentes/ChauPhilomeneOne-Italic.ttf);
+}
+@font-face{
+    font-family: Quantify;
+    src: url(fuentes/Quantify-Bold.ttf);
+}
+@font-face{
+    font-family: Cambo;
+    src: url(fuentes/Cambo-Regular.otf);
+}
+@font-face{
+    font-family: Darkness;
+    src: url('fuentes/Darkness-Rising-DEMO.otf');
+}
+@font-face{
+    font-family: Grigory;
+    src: url('fuentes/DK-Grigory.otf');
+}
+@font-face{
+    font-family: Headlock;
+    src: url('fuentes/DK-Headlock.otf');
+}
+@font-face{
+    font-family: BlockletterBold;
+    src: url('fuentes/Freehand-Blockletter-Bold.ttf');
+}
+@font-face{
+    font-family: Blockletter;
+    src: url('fuentes/Freehand-Blockletter.ttf');
+}
+@font-face{
+    font-family: Incompetent;
+    src: url('fuentes/Incompetent-Landlord.otf');
+}
+@font-face{
+    font-family: Konkretika;
+    src: url(fuentes/Konkretika-Black-WIP.ttf);
+}
+@font-face{
+    font-family: Kosmodoggy;
+    src: url(fuentes/Kosmodoggy_Bold.ttf);
+}
+@font-face{
+    font-family: Quesat;
+    src: url(fuentes/Quesat-Striped-Demo.otf);
+}
+@font-face{
+    font-family: Techno;
+    src: url('fuentes/Techno-Til-Dawn.otf');
+}

@@ -26,24 +26,29 @@
     <!--     Fonts and icons     -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet"/>
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'/>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Asul|Baloo+Bhaina|Cantora+One|Corben|Gabriela|Gurajada|Imprima|Katibeh|Sansita');
+    </style>
+    <link href="../assets/fonts/fuentes.css" rel="stylesheet" />
+    <link href="../assets/css/extra.css" rel="stylesheet" />
 </head>
-<body >
+<body class="body-daily">
     <form id="form1" runat="server">
-    <div class="text-center" style ="  margin-right: auto; margin-left:auto; width: 400px;border: 3px solid #9D00AE; background-color: white; box-shadow: 0px 0px 69px -4px rgba(169,173,185,1); height: 450px; margin-top: 50px;">
-        <br />
-        <h2 class="text-center">Bienvenido</h2>
-        <h4>Esta es su guía para recuperar su contraseña:</h4>
+    <div class="text-center fondito">
+        <h1 class="text-center" id="titulo-daily3">BIENVENIDO</h1>
+        <h4 class="h4-daily">Esta es su guía para recuperar su contraseña:</h4>
         <div class="form-group" style="margin-right: auto; margin-left:auto; width:300px;">
-            <label for="Text" style="margin-right: auto; margin-left:auto;">Correo</label>
+            <label for="Text" id="lb-daily3" style="margin-right: auto; margin-left:auto;">Correo</label>
             <asp:TextBox TextMode="Email" runat="server" ID="Text" class="form-control" style="text-align:center; margin-right: auto; margin-left:auto;"></asp:TextBox>
-            <span class="text-primary">Debe ingresar el correo con el cual se registro</span>
+            <span class="bmd-help">Debe ingresar el correo con el cual se registro</span>
         </div>
         <div style="margin-right: auto; margin-left:auto; width:200px;">
             <p class="text-muted"><i class="material-icons" style="color:#9D00AE;">info_outline</i>Dentro de un momento recibira su nueva contraseña en su correo.</p>
         </div>
         <asp:Label ID="MsgError" runat="server" ForeColor="Red" Visible="false" style="margin-bottom: 10px"></asp:Label>
         <br>
-        <asp:Button runat="server" Text="Enviar" class="btn btn-primary" style="margin-right: auto; margin-left:auto;" OnClick="Enviar"/>
+        <asp:Button runat="server" Text="Enviar" class="btn btn-daily" style="margin-right: auto; margin-left:auto;" OnClick="Enviar"/>
     </div>
     </form>
 
