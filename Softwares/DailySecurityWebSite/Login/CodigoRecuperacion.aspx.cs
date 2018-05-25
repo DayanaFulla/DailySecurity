@@ -45,7 +45,7 @@ public partial class Login_CodigoRecuperacion : System.Web.UI.Page
         if (!recup.Estado.Equals("P") || comparacion <= 0)
         {
             RecuperacionBRL.DeleteRecuperacion(recup.ResuperacionId);
-            Response.Write("<script language=javascript>alert('Vuelva a solicitar el servicio'); window.location.href = \"~/Login/Recuperar.aspx\";</script>");
+            Response.Write("<script language=javascript>alert('Vuelva a solicitar el servicio'); window.location.href = \"/Recuperar.aspx\";</script>");
             return;
         }
         RecuperacionBRL.DeleteRecuperacion(recup.ResuperacionId);

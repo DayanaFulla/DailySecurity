@@ -1,6 +1,8 @@
 ﻿using DailyDB.App_Code.DAL;
 using System;
 using DailyDB.App_Code.Model;
+using System.Collections.Generic;
+
 namespace DailyDB.App_Code.BRL
 {
     /// <summary>
@@ -36,7 +38,7 @@ namespace DailyDB.App_Code.BRL
                 Apellido = row.Apellido,
                 Telefono = row.Telefono,
                 Correo = row.Correo,
-                Contrasena = row.Contraseña,
+                Contrasena = DesEncriptarPassword(row.Contraseña),
                 EstadoEspera = row.EstadoEspera,
                 EstadoCuenta = row.EstadoCuenta
             };
@@ -47,7 +49,8 @@ namespace DailyDB.App_Code.BRL
             if (string.IsNullOrEmpty(email))
                 throw new ArgumentException("Email no es valido");
 
-            DailyDB.App_Code.DAL.UsuarioDSTableAdapters.UsuarioTableAdapter adapter = new DailyDB.App_Code.DAL.UsuarioDSTableAdapters.UsuarioTableAdapter();
+            DAL.UsuarioDSTableAdapters.UsuarioTableAdapter adapter = new DAL.UsuarioDSTableAdapters.UsuarioTableAdapter();
+            System.Diagnostics.Debug.WriteLine("Esto en GetUsuario: " + email);
             UsuarioDS.UsuarioDataTable table = adapter.GetUsuarioByEmail(email);
             if (table.Rows.Count == 0)
                 return null;
@@ -106,7 +109,7 @@ namespace DailyDB.App_Code.BRL
             }
 
             DailyDB.App_Code.DAL.UsuarioDSTableAdapters.UsuarioTableAdapter adapter = new DailyDB.App_Code.DAL.UsuarioDSTableAdapters.UsuarioTableAdapter();
-            adapter.Insert(obj.Nombre, obj.Apellido, obj.Telefono, obj.Correo, obj.Contrasena, ref idUsuario);
+            adapter.Insert(obj.Nombre, obj.Apellido, obj.Telefono, obj.Correo, EncriptarPassword(obj.Contrasena), ref idUsuario);
             if (idUsuario == 0)
             {
                 throw new ArgumentException("Error al insertar un nuevo usuario");
@@ -137,5 +140,19 @@ namespace DailyDB.App_Code.BRL
             return user.EstadoEspera;
         }
 
+        public static List<Usuario> getUsuarios()
+        {
+            DAL.UsuarioDSTableAdapters.UsuarioTableAdapter adapter = new DAL.UsuarioDSTableAdapters.UsuarioTableAdapter();
+            UsuarioDS.UsuarioDataTable table = adapter.GetUsuarios();
+            List<Usuario> res = new List<Usuario>();
+            foreach (UsuarioDS.UsuarioRow row in table)
+            {
+                Usuario user = GetUsuarioFromRow(row);
+                res.Add(user);
+            }
+            return res;
+        }
     }
+
+    
 }

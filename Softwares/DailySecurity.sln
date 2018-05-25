@@ -27,6 +27,8 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "DailySecurityWebSite", "htt
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DailyDB", "DailyDB\DailyDB.csproj", "{A41FA84F-D21E-40F2-BC11-FB146777C1F6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiciosWEB", "Servicios\ServiciosWEB.csproj", "{2C2946A3-C5DD-4874-9A16-5DAFCA5A6D99}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +43,10 @@ Global
 		{A41FA84F-D21E-40F2-BC11-FB146777C1F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A41FA84F-D21E-40F2-BC11-FB146777C1F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A41FA84F-D21E-40F2-BC11-FB146777C1F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C2946A3-C5DD-4874-9A16-5DAFCA5A6D99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C2946A3-C5DD-4874-9A16-5DAFCA5A6D99}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C2946A3-C5DD-4874-9A16-5DAFCA5A6D99}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C2946A3-C5DD-4874-9A16-5DAFCA5A6D99}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -40,9 +40,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Code\BRL\AlarmaBRL.cs" />
     <Compile Include="App_Code\BRL\RecuperacionBRL.cs" />
     <Compile Include="App_Code\BRL\UsuarioBRL.cs" />
     <Compile Include="App_Code\BRL\VerificacionBRL.cs" />
+    <Compile Include="App_Code\DAL\AlarmaDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AlarmaDS.xsd</DependentUpon>
+    </Compile>
     <Compile Include="App_Code\DAL\RecuperacionDS.cs">
       <DependentUpon>RecuperacionDS.xsd</DependentUpon>
     </Compile>
@@ -61,6 +67,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>VerificacionDS.xsd</DependentUpon>
     </Compile>
+    <Compile Include="App_Code\Model\Alarma.cs" />
     <Compile Include="App_Code\Model\EncriptarClass.cs" />
     <Compile Include="App_Code\Model\Recuperacion.cs" />
     <Compile Include="App_Code\Model\Usuario.cs" />
@@ -74,6 +81,17 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="App_Code\DAL\AlarmaDS.xsc">
+      <DependentUpon>AlarmaDS.xsd</DependentUpon>
+    </None>
+    <None Include="App_Code\DAL\AlarmaDS.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>AlarmaDS.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="App_Code\DAL\AlarmaDS.xss">
+      <DependentUpon>AlarmaDS.xsd</DependentUpon>
+    </None>
     <None Include="App_Code\DAL\RecuperacionDS.xsc">
       <DependentUpon>RecuperacionDS.xsd</DependentUpon>
     </None>

@@ -73,7 +73,7 @@ public partial class Registrar : System.Web.UI.Page
                 Apellido = US_apellido,
                 Telefono = US_telefono,
                 Correo = US_email,
-                Contrasena = UsuarioBRL.EncriptarPassword(US_contraseña),
+                Contrasena = US_contraseña,
             };
 
             int idUsuario = UsuarioBRL.InsertarUsuario(obj);

@@ -35,7 +35,8 @@ public partial class Login_Default : System.Web.UI.Page
             DailyDB.App_Code.Model.Usuario userActual = UsuarioBRL.GetUsuarioByEmail(correoActual);
             if (userActual != null)
             {
-                String desEncriptada = UsuarioBRL.DesEncriptarPassword(userActual.Contrasena);
+                String desEncriptada = userActual.Contrasena;
+                System.Diagnostics.Debug.WriteLine("Esta es la contrseña: "+desEncriptada+" - este dentro"+contraseñaActual);
                 if (desEncriptada.Equals(contraseñaActual))
                 {
                     bool estadoEsperaUsuario = UsuarioBRL.getEstadoEsperaUsuarioByID(userActual.UsuarioID);

@@ -46,8 +46,8 @@ namespace DailyDB.App_Code.BRL
             if (UsuarioID <= 0)
                 throw new ArgumentException("Id con valor invalido");
 
-            DailyDB.App_Code.DAL.RecuperacionDSTableAdapters.RecuperacionTableAdapter adapter = new DailyDB.App_Code.DAL.RecuperacionDSTableAdapters.RecuperacionTableAdapter();
-            DailyDB.App_Code.DAL.RecuperacionDS.RecuperacionDataTable table = adapter.GetRecuperacionByUsuarioId(UsuarioID);
+            DAL.RecuperacionDSTableAdapters.RecuperacionTableAdapter adapter = new DailyDB.App_Code.DAL.RecuperacionDSTableAdapters.RecuperacionTableAdapter();
+            RecuperacionDS.RecuperacionDataTable table = adapter.GetRecuperacionByUsuarioId(UsuarioID);
             if (table.Rows.Count == 0)
                 return null;
 
