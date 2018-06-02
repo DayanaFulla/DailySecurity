@@ -8,26 +8,30 @@ using System.Threading.Tasks;
 
 namespace DailyDB.App_Code.BRL
 {
-    class AlarmaBRL
+    public class AlarmaBRL
     {
         private static Alarma GetAlarmaFromRow(AlarmaDS.AlarmaRow row)
         {
-            return new Alarma()
+            //int? idUsuario = row.UsuarioID;
+            Alarma alarma = new Alarma();
+            alarma.AlarmaId = row.AlarmaId;
+            alarma.Codigo = row.Codigo;
+            alarma.Estado = row.Estado;
+            if (alarma.Estado.Equals('1'))
             {
-                AlarmaId = row.AlarmaId,
-                Codigo = row.Codigo,
-                Estado = row.Estado,
-                Alerta = row.Alerta,
-                Latitud = row.Latitud,
-                Longitud = row.Longitud,
-                UsuarioID = row.UsuarioID,
-                Contrasena = row.Contrasena
-            };
+                alarma.Alerta = row.Alerta;
+                alarma.Latitud = row.Latitud;
+                alarma.Longitud = row.Longitud;
+                alarma.UsuarioID = row.UsuarioID;
+                alarma.Contrasena = row.Contrasena;
+                return alarma;
+            }
+            return alarma;
         }
 
-        private static Alarma GetAlarmaByID(int idAlarma)
+        public static Alarma GetAlarmaByID(int idAlarma)
         {
-            if (idAlarma <= 0 || idAlarma == null)
+            if (idAlarma <= 0)
                 throw new ArgumentException("Id de alarma es nula");
 
             DAL.AlarmaDSTableAdapters.AlarmaTableAdapter adapter = new DAL.AlarmaDSTableAdapters.AlarmaTableAdapter();
@@ -35,12 +39,10 @@ namespace DailyDB.App_Code.BRL
             if (table.Rows.Count == 0)
             {
                 throw new ArgumentException("Vacio o tal vez no existe");
-                return null;
             }
 
             Alarma alarma = GetAlarmaFromRow(table[0]);
             return alarma;
-
         }
 
         private static Alarma GetAlarmaByIdUsuarioById(int idUsuario,int idAlarma)

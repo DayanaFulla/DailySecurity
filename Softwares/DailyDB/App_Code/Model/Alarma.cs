@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DailyDB.App_Code.Model
 {
-    class Alarma
+    public class Alarma
     {
         public int AlarmaId { get; set; }
         public string Codigo { get; set; }
@@ -16,5 +16,6 @@ namespace DailyDB.App_Code.Model
         public string Longitud { get; set; }
         public int UsuarioID { get; set; }
         public string Contrasena { get; set; }
+        
     }
 }
