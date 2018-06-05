@@ -213,7 +213,7 @@ END
 IF @intVersionMayor IS NULL OR @intVersionMenor IS NULL OR NOT (@intVersionMayor = 0 AND @intVersionMenor = 4)
 BEGIN
 	
-	RAISERROR('La base de datos no esta en la version 0.3. Este script solamente se apllica a la version 0.4',16,127)
+	RAISERROR('La base de datos no esta en la version 0.4. Este script solamente se apllica a la version 0.4',16,127)
 	RETURN;
 
 END
