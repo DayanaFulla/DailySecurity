@@ -16,6 +16,6 @@ namespace DailyDB.App_Code.Model
         public string Longitud { get; set; }
         public int UsuarioID { get; set; }
         public string Contrasena { get; set; }
-        
+        public string Nombre { get; set; }
     }
 }

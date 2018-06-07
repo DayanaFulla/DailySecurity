@@ -23,6 +23,7 @@ namespace DailyDB.App_Code.BRL
                 alarma.Longitud = row.Longitud;
                 alarma.UsuarioID = row.UsuarioId;
                 alarma.Contrasena = row.Contrasena;
+                alarma.Nombre = row.Nombre;
                 return alarma;
             }
             return alarma;
@@ -94,7 +95,7 @@ namespace DailyDB.App_Code.BRL
                 throw new ArgumentException("No hay Alarma");
 
             DAL.AlarmaDSTableAdapters.AlarmaTableAdapter adapter = new DAL.AlarmaDSTableAdapters.AlarmaTableAdapter();
-            adapter.Update(alrm.AlarmaId, alrm.Estado, alrm.Alerta, alrm.Latitud, alrm.Longitud, alrm.Contrasena, alrm.UsuarioID);
+            adapter.Update(alrm.AlarmaId, alrm.Estado, alrm.Alerta, alrm.Latitud, alrm.Longitud, alrm.Contrasena, alrm.Nombre, alrm.UsuarioID);
         }
 
         public static Alarma GetAlarmaByCodigo(String codigo)

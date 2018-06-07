@@ -9,6 +9,7 @@ public class Alarma {
     private String Longitud;
     private int UsuarioID;
     private String Contrasena;
+    private String Nombre;
 
     public Alarma() {
     }
@@ -76,4 +77,8 @@ public class Alarma {
     public void setContrasena(String contrasena) {
         Contrasena = contrasena;
     }
+
+    public String getNombre() { return Nombre; }
+
+    public void setNombre(String nombre) { Nombre = nombre; }
 }

@@ -29,7 +29,7 @@ import daily.pruebaconexion.Modelo.Usuario;
 
 public class ConfigurePIN extends AppCompatActivity {
 
-    TextView txtPin1,txtPin2,txtERROR;
+    TextView txtPin1,txtPin2,txtERROR, txtNOMBRE;
     Button btnListo;
 
     @Override
@@ -40,6 +40,7 @@ public class ConfigurePIN extends AppCompatActivity {
         txtPin1 = findViewById(R.id.txtPIN1);
         txtPin2 = findViewById(R.id.txtPIN2);
         txtERROR = findViewById(R.id.txtError);
+        txtNOMBRE = findViewById(R.id.txtNombre);
         btnListo = findViewById(R.id.btnPin);
 
         btnListo.setOnClickListener(new View.OnClickListener() {
@@ -56,7 +57,7 @@ public class ConfigurePIN extends AppCompatActivity {
 
     public void listo(){
         final String PIN = txtPin1.getText().toString().trim();
-
+        final String Nombre = txtNOMBRE.getText().toString().trim();
         //Toast.makeText(LoginActivity.this, "Entro a Ingresar", Toast.LENGTH_LONG).show();
 
         JSONObject jsonBody = new JSONObject();
@@ -69,6 +70,7 @@ public class ConfigurePIN extends AppCompatActivity {
             jsonBody.put("Longitud", ConfigureGPS.LONGITUD+"");
             jsonBody.put("UsuarioID", Usuario.getInstance().getUsuarioID()+"");
             jsonBody.put("Contrasena", PIN+"");
+            jsonBody.put("Nombre", Nombre+"");
         } catch (Exception e){
             Toast.makeText(ConfigurePIN.this, "Error: "+e, Toast.LENGTH_SHORT).show();
             Log.e("Error JSON:", e.toString());
@@ -119,6 +121,7 @@ public class ConfigurePIN extends AppCompatActivity {
                 map.put("Longitud", ConfigureGPS.LONGITUD+"");
                 map.put("UsuarioID", Usuario.getInstance().getUsuarioID()+"");
                 map.put("Contrasena", PIN+"");
+                map.put("Nombre", Nombre+"");
                 return map;
             }
         };

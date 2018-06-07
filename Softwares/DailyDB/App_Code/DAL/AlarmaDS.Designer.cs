@@ -295,6 +295,8 @@ namespace DailyDB.App_Code.DAL {
             
             private global::System.Data.DataColumn columnContrasena;
             
+            private global::System.Data.DataColumn columnNombre;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public AlarmaDataTable() {
@@ -394,6 +396,14 @@ namespace DailyDB.App_Code.DAL {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn NombreColumn {
+                get {
+                    return this.columnNombre;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -429,7 +439,7 @@ namespace DailyDB.App_Code.DAL {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public AlarmaRow AddAlarmaRow(string Codigo, int Estado, int Alerta, string Latitud, string Longitud, int UsuarioId, string Contrasena) {
+            public AlarmaRow AddAlarmaRow(string Codigo, int Estado, int Alerta, string Latitud, string Longitud, int UsuarioId, string Contrasena, string Nombre) {
                 AlarmaRow rowAlarmaRow = ((AlarmaRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -439,7 +449,8 @@ namespace DailyDB.App_Code.DAL {
                         Latitud,
                         Longitud,
                         UsuarioId,
-                        Contrasena};
+                        Contrasena,
+                        Nombre};
                 rowAlarmaRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowAlarmaRow);
                 return rowAlarmaRow;
@@ -477,6 +488,7 @@ namespace DailyDB.App_Code.DAL {
                 this.columnLongitud = base.Columns["Longitud"];
                 this.columnUsuarioId = base.Columns["UsuarioId"];
                 this.columnContrasena = base.Columns["Contrasena"];
+                this.columnNombre = base.Columns["Nombre"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -498,6 +510,8 @@ namespace DailyDB.App_Code.DAL {
                 base.Columns.Add(this.columnUsuarioId);
                 this.columnContrasena = new global::System.Data.DataColumn("Contrasena", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnContrasena);
+                this.columnNombre = new global::System.Data.DataColumn("Nombre", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNombre);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnAlarmaId}, true));
                 this.columnAlarmaId.AutoIncrement = true;
@@ -511,6 +525,7 @@ namespace DailyDB.App_Code.DAL {
                 this.columnLatitud.MaxLength = 20;
                 this.columnLongitud.MaxLength = 20;
                 this.columnContrasena.MaxLength = 50;
+                this.columnNombre.MaxLength = 30;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -771,6 +786,22 @@ namespace DailyDB.App_Code.DAL {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Nombre {
+                get {
+                    try {
+                        return ((string)(this[this.tableAlarma.NombreColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Nombre\' in table \'Alarma\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableAlarma.NombreColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsEstadoNull() {
                 return this.IsNull(this.tableAlarma.EstadoColumn);
             }
@@ -839,6 +870,18 @@ namespace DailyDB.App_Code.DAL {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetContrasenaNull() {
                 this[this.tableAlarma.ContrasenaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsNombreNull() {
+                return this.IsNull(this.tableAlarma.NombreColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetNombreNull() {
+                this[this.tableAlarma.NombreColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -1009,6 +1052,7 @@ namespace DailyDB.App_Code.DAL.AlarmaDSTableAdapters {
             tableMapping.ColumnMappings.Add("Longitud", "Longitud");
             tableMapping.ColumnMappings.Add("UsuarioId", "UsuarioId");
             tableMapping.ColumnMappings.Add("Contrasena", "Contrasena");
+            tableMapping.ColumnMappings.Add("Nombre", "Nombre");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
@@ -1039,6 +1083,7 @@ namespace DailyDB.App_Code.DAL.AlarmaDSTableAdapters {
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@latitud", global::System.Data.SqlDbType.VarChar, 20, global::System.Data.ParameterDirection.Input, 0, 0, "Latitud", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@longitud", global::System.Data.SqlDbType.VarChar, 20, global::System.Data.ParameterDirection.Input, 0, 0, "Longitud", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@contrasena", global::System.Data.SqlDbType.NChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Contrasena", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nombre", global::System.Data.SqlDbType.NVarChar, 30, global::System.Data.ParameterDirection.Input, 0, 0, "Nombre", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@usuarioId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 10, 0, "UsuarioID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
@@ -1284,7 +1329,7 @@ namespace DailyDB.App_Code.DAL.AlarmaDSTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(global::System.Nullable<int> alarmaId, global::System.Nullable<int> estado, global::System.Nullable<int> alerta, string latitud, string longitud, string contrasena, global::System.Nullable<int> usuarioId) {
+        public virtual int Update(global::System.Nullable<int> alarmaId, global::System.Nullable<int> estado, global::System.Nullable<int> alerta, string latitud, string longitud, string contrasena, string nombre, global::System.Nullable<int> usuarioId) {
             if ((alarmaId.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(alarmaId.Value));
             }
@@ -1321,11 +1366,17 @@ namespace DailyDB.App_Code.DAL.AlarmaDSTableAdapters {
             else {
                 this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(contrasena));
             }
-            if ((usuarioId.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(usuarioId.Value));
+            if ((nombre == null)) {
+                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(nombre));
+            }
+            if ((usuarioId.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(usuarioId.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 

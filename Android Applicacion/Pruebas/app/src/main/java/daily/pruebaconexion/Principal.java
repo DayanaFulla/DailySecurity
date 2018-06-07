@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -15,7 +16,18 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.TimeoutError;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import daily.pruebaconexion.Modelo.Alarma;
 import daily.pruebaconexion.Modelo.Usuario;
+import daily.pruebaconexion.Servicio.MySingleton;
 
 
 public class Principal extends AppCompatActivity
@@ -29,9 +41,9 @@ public class Principal extends AppCompatActivity
         setContentView(R.layout.activity_principal);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        txtUsuario = findViewById(R.id.txt_usuario);
 
-        txtUsuario.setText(Usuario.getInstance().getUsuarioID()+"Bienvenido");
+        txtUsuario = findViewById(R.id.txt_usuario);
+        obtenerUsuario();
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -106,5 +118,46 @@ public class Principal extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+
+    public void obtenerUsuario(){
+        String url = "http://192.168.0.12:1234/api/Usuario/GetUsuario/"+Usuario.getInstance().getUsuarioID();
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
+                (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            Usuario.getInstance().setNombre(response.getString("Nombre"));
+                            Usuario.getInstance().setApellido(response.getString("Apellido"));
+                            Usuario.getInstance().setTelefono(response.getString("Telefono"));
+                            Usuario.getInstance().setCorreo(response.getString("Correo"));
+
+                            txtUsuario.setText(Usuario.getInstance().getNombre()+" "+Usuario.getInstance().getApellido()+" Bienvenido");
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            Log.e("ERROR:", e.toString());
+                        }
+
+                    }
+                }, new Response.ErrorListener() {
+
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // TODO: Handle error
+                        if (error.networkResponse.statusCode == 404) {
+                            Log.e("ERROR:", "404");
+                        }else if(error.networkResponse == null){
+                            if(error.getClass().equals(TimeoutError.class)){
+                                Log.e("ERROR:", "NULL TIME");
+                            }
+                        }else{
+                            Log.e("ERROR:", error.toString());
+                        }
+                    }
+                });
+        MySingleton.getInstance(this).addToRequestQueue(jsonObjectRequest);
     }
 }

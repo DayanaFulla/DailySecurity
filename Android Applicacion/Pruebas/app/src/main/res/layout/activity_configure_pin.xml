@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="145dp"
+        android:layout_marginTop="79dp"
         android:text="PIN:"
         android:textColor="@android:color/black"
         android:textSize="25dp" />
@@ -23,7 +23,7 @@
         android:layout_height="27dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="155dp"
+        android:layout_marginBottom="76dp"
         android:background="@color/colorPrimary"
         android:text="Listo"
         android:textColor="@android:color/white" />
@@ -33,7 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="229dp">
+        android:layout_marginTop="122dp">
 
         <EditText
             android:id="@+id/txtPIN1"
@@ -51,7 +51,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="170dp">
+        android:layout_marginTop="188dp">
 
         <EditText
             android:id="@+id/txtPIN2"
@@ -70,9 +70,37 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="196dp"
-        android:textColor="@color/colorPrimaryDark"
-        android:text="" />
+        android:layout_marginBottom="240dp"
+        android:text=""
+        android:textColor="@color/colorPrimaryDark" />
 
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="184dp"
+        android:text="NOMBRE DE ALARMA:"
+        android:textColor="@android:color/black"
+        android:textSize="25dp" />
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="119dp">
+
+        <EditText
+            android:id="@+id/txtNombre"
+            android:layout_width="263dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Bautize a su producto"
+            android:inputType="text"
+            android:textAlignment="center"
+            android:textStyle="bold" />
+    </android.support.design.widget.TextInputLayout>
 
 </RelativeLayout>

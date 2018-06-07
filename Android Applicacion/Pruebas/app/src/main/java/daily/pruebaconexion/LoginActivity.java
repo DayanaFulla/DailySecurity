@@ -93,9 +93,9 @@ public class LoginActivity extends AppCompatActivity {
                     //Toast.makeText(LoginActivity.this, "Recibio: " + response, Toast.LENGTH_LONG).show();
                     String idUsuario = response.toString();
                     idUsuario = idUsuario.substring(1,idUsuario.length()-1);
+                    Usuario.getInstance().setUsuarioID(Integer.parseInt(idUsuario));
                     //idUsuario = idUsuario.substring(idUsuario.length()-1, idUsuario.length());
                     Toast.makeText(LoginActivity.this, "esto es lo que recibio: "+idUsuario, Toast.LENGTH_LONG).show();
-                    Usuario.getInstance().setUsuarioID(Integer.parseInt(idUsuario));
                     Intent intent = new Intent(LoginActivity.this, Principal.class);
                     startActivity(intent);
                 }
