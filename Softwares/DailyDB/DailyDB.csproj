@@ -41,13 +41,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Code\BRL\AlarmaBRL.cs" />
+    <Compile Include="App_Code\BRL\LlaveBRL.cs" />
     <Compile Include="App_Code\BRL\RecuperacionBRL.cs" />
     <Compile Include="App_Code\BRL\UsuarioBRL.cs" />
     <Compile Include="App_Code\BRL\VerificacionBRL.cs" />
+    <Compile Include="App_Code\BRL\VersionBRL.cs" />
     <Compile Include="App_Code\DAL\AlarmaDS.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>AlarmaDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\DAL\LlaveDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LlaveDS.xsd</DependentUpon>
     </Compile>
     <Compile Include="App_Code\DAL\RecuperacionDS.cs">
       <DependentUpon>RecuperacionDS.xsd</DependentUpon>
@@ -67,11 +74,18 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>VerificacionDS.xsd</DependentUpon>
     </Compile>
+    <Compile Include="App_Code\DAL\VersionDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>VersionDS.xsd</DependentUpon>
+    </Compile>
     <Compile Include="App_Code\Model\Alarma.cs" />
     <Compile Include="App_Code\Model\EncriptarClass.cs" />
+    <Compile Include="App_Code\Model\Llave.cs" />
     <Compile Include="App_Code\Model\Recuperacion.cs" />
     <Compile Include="App_Code\Model\Usuario.cs" />
     <Compile Include="App_Code\Model\Verificacion.cs" />
+    <Compile Include="App_Code\Model\Version.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -91,6 +105,17 @@
     </None>
     <None Include="App_Code\DAL\AlarmaDS.xss">
       <DependentUpon>AlarmaDS.xsd</DependentUpon>
+    </None>
+    <None Include="App_Code\DAL\LlaveDS.xsc">
+      <DependentUpon>LlaveDS.xsd</DependentUpon>
+    </None>
+    <None Include="App_Code\DAL\LlaveDS.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>LlaveDS.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="App_Code\DAL\LlaveDS.xss">
+      <DependentUpon>LlaveDS.xsd</DependentUpon>
     </None>
     <None Include="App_Code\DAL\RecuperacionDS.xsc">
       <DependentUpon>RecuperacionDS.xsd</DependentUpon>
@@ -124,6 +149,17 @@
     </None>
     <None Include="App_Code\DAL\VerificacionDS.xss">
       <DependentUpon>VerificacionDS.xsd</DependentUpon>
+    </None>
+    <None Include="App_Code\DAL\VersionDS.xsc">
+      <DependentUpon>VersionDS.xsd</DependentUpon>
+    </None>
+    <None Include="App_Code\DAL\VersionDS.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>VersionDS.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="App_Code\DAL\VersionDS.xss">
+      <DependentUpon>VersionDS.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

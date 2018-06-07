@@ -33,7 +33,8 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".ConfigureQR" />
         <activity android:name=".ConfigureGPS" />
-        <activity android:name=".ConfigurePIN"></activity>
+        <activity android:name=".ConfigurePIN" />
+        <activity android:name=".Abrir"></activity>
     </application>
 
 </manifest>
