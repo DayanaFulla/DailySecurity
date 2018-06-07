@@ -12,17 +12,16 @@ namespace DailyDB.App_Code.BRL
     {
         private static Alarma GetAlarmaFromRow(AlarmaDS.AlarmaRow row)
         {
-            //int? idUsuario = row.UsuarioID;
             Alarma alarma = new Alarma();
             alarma.AlarmaId = row.AlarmaId;
             alarma.Codigo = row.Codigo;
             alarma.Estado = row.Estado;
-            if (alarma.Estado.Equals('1'))
+            if (alarma.Estado == 1)
             {
                 alarma.Alerta = row.Alerta;
                 alarma.Latitud = row.Latitud;
                 alarma.Longitud = row.Longitud;
-                alarma.UsuarioID = row.UsuarioID;
+                alarma.UsuarioID = row.UsuarioId;
                 alarma.Contrasena = row.Contrasena;
                 return alarma;
             }
@@ -45,9 +44,9 @@ namespace DailyDB.App_Code.BRL
             return alarma;
         }
 
-        private static Alarma GetAlarmaByIdUsuarioById(int idUsuario,int idAlarma)
+        public static Alarma GetAlarmaByIdUsuarioById(int idUsuario,int idAlarma)
         {
-            if (idAlarma <= 0 || idUsuario <= 0 || idUsuario == null || idAlarma == null)
+            if (idAlarma <= 0 || idUsuario <= 0 )
                 throw new ArgumentException("Id de alarma  o usuario es nula");
 
             DAL.AlarmaDSTableAdapters.AlarmaTableAdapter adapter = new DAL.AlarmaDSTableAdapters.AlarmaTableAdapter();
@@ -63,9 +62,9 @@ namespace DailyDB.App_Code.BRL
 
         }
 
-        private static Alarma GetAlarmaByIdUsuario(int idUsuario)
+        public static Alarma GetAlarmaByIdUsuario(int idUsuario)
         {
-            if (idUsuario <= 0 || idUsuario == null )
+            if (idUsuario <= 0 )
                 throw new ArgumentException("Id de usuario  o usuario es nula");
 
             DAL.AlarmaDSTableAdapters.AlarmaTableAdapter adapter = new DAL.AlarmaDSTableAdapters.AlarmaTableAdapter();
@@ -80,22 +79,38 @@ namespace DailyDB.App_Code.BRL
             return alarma;
         }
 
-        private static void DeleteAlarma(int idAlarma)
+        public static void DeleteAlarma(int idAlarma)
         {
-            if (idAlarma <= 0 || idAlarma == null)
+            if (idAlarma <= 0)
                 throw new ArgumentException("Id de alarma  o usuario es nula");
 
             DAL.AlarmaDSTableAdapters.AlarmaTableAdapter adapter = new DAL.AlarmaDSTableAdapters.AlarmaTableAdapter();
             adapter.Delete(idAlarma);
         }
 
-        private static void UpdateAlarma(Alarma alrm)
+        public static void UpdateAlarma(Alarma alrm)
         {
             if (alrm == null)
                 throw new ArgumentException("No hay Alarma");
 
             DAL.AlarmaDSTableAdapters.AlarmaTableAdapter adapter = new DAL.AlarmaDSTableAdapters.AlarmaTableAdapter();
             adapter.Update(alrm.AlarmaId, alrm.Estado, alrm.Alerta, alrm.Latitud, alrm.Longitud, alrm.Contrasena, alrm.UsuarioID);
+        }
+
+        public static Alarma GetAlarmaByCodigo(String codigo)
+        {
+            if (String.IsNullOrEmpty(codigo))
+                throw new ArgumentException("Codigo Vacio");
+
+            DAL.AlarmaDSTableAdapters.AlarmaTableAdapter adapter = new DAL.AlarmaDSTableAdapters.AlarmaTableAdapter();
+            AlarmaDS.AlarmaDataTable table = adapter.GetAlarmaByCodigo(codigo);
+            if (table.Rows.Count == 0)
+            {
+                throw new ArgumentException("Vacio o tal vez no existe");
+            }
+
+            Alarma alarma = GetAlarmaFromRow(table[0]);
+            return alarma;
         }
 
     }

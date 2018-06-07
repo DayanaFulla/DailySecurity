@@ -1,5 +1,6 @@
 package daily.pruebaconexion;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -12,9 +13,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
+
+import daily.pruebaconexion.Modelo.Usuario;
+
 
 public class Principal extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    TextView txtUsuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +29,9 @@ public class Principal extends AppCompatActivity
         setContentView(R.layout.activity_principal);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        txtUsuario = findViewById(R.id.txt_usuario);
+
+        txtUsuario.setText(Usuario.getInstance().getUsuarioID()+"Bienvenido");
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -80,9 +90,14 @@ public class Principal extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_manage) {
+        if (id == R.id.nav_configure) {
+            Intent intent = new Intent(Principal.this, ConfigureQR.class);
+            startActivity(intent);
+        }else if (id == R.id.nsv_mis_llaves) {
 
-        } else if (id == R.id.nav_share) {
+        }else if (id == R.id.nsv_llaves) {
+
+        }else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {
 

@@ -10,8 +10,8 @@ namespace DailyDB.App_Code.Model
     {
         public int AlarmaId { get; set; }
         public string Codigo { get; set; }
-        public string Estado { get; set; }
-        public string Alerta { get; set; }
+        public int Estado { get; set; }
+        public int Alerta { get; set; }
         public string Latitud { get; set; }
         public string Longitud { get; set; }
         public int UsuarioID { get; set; }

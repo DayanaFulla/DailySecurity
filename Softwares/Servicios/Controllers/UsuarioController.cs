@@ -77,7 +77,15 @@ namespace Servicios.Controllers
             }
             if(usr.Contrasena == usuario.Contrasena)
             {
-                msg = Request.CreateResponse<string>(HttpStatusCode.OK, usr.UsuarioID.ToString());
+                if (usr.EstadoEspera)
+                {
+                    msg = Request.CreateResponse<string>(HttpStatusCode.OK, usr.UsuarioID.ToString());
+                }
+                else
+                {
+                    msg = Request.CreateResponse<string>(HttpStatusCode.OK, "VERIFICACION");
+                }
+
             }
             else
             {

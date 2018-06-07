@@ -1,6 +1,8 @@
 package daily.pruebaconexion.Modelo;
 
 public class Usuario {
+
+    private static final Usuario instancia = new Usuario();
     public int UsuarioID ;
     public String Nombre ;
     public String Apellido ;
@@ -9,6 +11,10 @@ public class Usuario {
     public String Contrasena ;
     public boolean EstadoEspera ;
     public boolean EstadoCuenta ;
+
+    public static Usuario getInstance(){
+        return instancia;
+    }
 
     public int getUsuarioID() {
         return UsuarioID;

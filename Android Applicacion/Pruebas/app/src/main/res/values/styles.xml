@@ -17,4 +17,11 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="MenuA" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:textSize">10dp</item>
+    </style>
+
+    <style name="MenuB" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:textSize">29dp</item>
+    </style>
 </resources>

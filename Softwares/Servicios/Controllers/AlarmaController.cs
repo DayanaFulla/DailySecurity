@@ -13,16 +13,16 @@ namespace Servicios.Controllers
     public class AlarmaController : ApiController
     {
         [HttpGet]
-        [Route("GetAlarmaById/{idAlarma}")]
-        public HttpResponseMessage GetAlarmaById(string idAlarma)
+        [Route("GetAlarmaByCodigo/{Codigo}")]
+        public HttpResponseMessage GetAlarmaById(string Codigo)
         {
             HttpResponseMessage msg = null;
             try
             {
-                Alarma alarm = AlarmaBRL.GetAlarmaByID(int.Parse(idAlarma));
+                Alarma alarm = AlarmaBRL.GetAlarmaByCodigo(Codigo);
                 if (alarm == null)
                 {
-                    msg = Request.CreateErrorResponse(HttpStatusCode.NotFound, "No existe");
+                    msg = Request.CreateErrorResponse(HttpStatusCode.NotFound, "NOTFOUND");
                 }
                 else
                 {
@@ -31,12 +31,29 @@ namespace Servicios.Controllers
             }
             catch (Exception e)
             {
-                msg = Request.CreateErrorResponse(HttpStatusCode.NotFound, "Un roblema para obtener alarma de Id" + e);
+                msg = Request.CreateErrorResponse(HttpStatusCode.NotFound, "ERROR" + e);
                 return msg;
             }
             
             return msg;
         }
 
+        [HttpPost]
+        [Route("UpdateAlarma")]
+        public HttpResponseMessage UpdateAlarma (
+            [FromBody]Alarma alarma)
+        {
+            HttpResponseMessage msg = null;
+            try
+            {
+                AlarmaBRL.UpdateAlarma(alarma);
+                msg = Request.CreateResponse(HttpStatusCode.OK,"BIEN");
+            }
+            catch(Exception)
+            {
+                msg = Request.CreateResponse(HttpStatusCode.NotFound, "ERROR");
+            }
+            return msg;
+        }
     }
 }
