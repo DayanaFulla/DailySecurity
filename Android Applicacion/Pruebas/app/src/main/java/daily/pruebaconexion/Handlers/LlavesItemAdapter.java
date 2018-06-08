@@ -5,22 +5,26 @@ import android.view.LayoutInflater;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import daily.pruebaconexion.Modelo.Alarma;
+import daily.pruebaconexion.Modelo.Llave;
 import daily.pruebaconexion.R;
 
 public class LlavesItemAdapter extends LinearLayout{
 
-    private TextView txtNombreLlave;
+    private TextView txtNombreLlave,txtActive, txtKeyID;
 
-    public LlavesItemAdapter(Context context, Alarma alarma) {
+    public LlavesItemAdapter(Context context, Llave llave) {
         super(context);
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         if(inflater != null){
-            inflater.inflate(R.layout.llave_item, this);
+            inflater.inflate(R.layout.item_llave, this);
         }
 
         txtNombreLlave = findViewById(R.id.txtNombreLlave);
+        txtActive = findViewById(R.id.txtActivado);
+        txtKeyID = findViewById(R.id.txtLlaveID);
 
-        txtNombreLlave.setText(alarma.getNombre());
+        txtNombreLlave.setText(llave.getNombre());
+        txtActive.setText(llave.getEstado() == 1 ? "ACTIVADO" : "DESACTIVADO");
+        txtKeyID.setText(llave.getLlaveId()+"");
     }
 }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DailyDB.App_Code.BRL
 {
-    class LlaveBRL
+    public class LlaveBRL
     {
         private static Llave GetLlaveFromRow(LlaveDS.LlaveRow row)
         {

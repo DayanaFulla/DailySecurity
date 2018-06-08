@@ -38,6 +38,31 @@ namespace Servicios.Controllers
             return msg;
         }
 
+        [HttpGet]
+        [Route("GetAlarmaByUsuario/{UsuarioID}")]
+        public HttpResponseMessage GetAlarmaByUsuario(string UsuarioID)
+        {
+            HttpResponseMessage msg = null;
+            try
+            {
+                List<Alarma> alarmas = AlarmaBRL.GetAlarmaByIdUsuario(int.Parse(UsuarioID));
+                if (alarmas == null || alarmas.Count <= 0)
+                {
+                    msg = Request.CreateErrorResponse(HttpStatusCode.NotFound, "NOTFOUND");
+                }
+                else
+                {
+                    msg = Request.CreateResponse(HttpStatusCode.OK, alarmas);
+                }
+            }
+            catch (Exception e)
+            {
+                msg = Request.CreateErrorResponse(HttpStatusCode.NotFound, "ERROR" + e);
+            }
+
+            return msg;
+        }
+
         [HttpPost]
         [Route("UpdateAlarma")]
         public HttpResponseMessage UpdateAlarma (
@@ -55,5 +80,6 @@ namespace Servicios.Controllers
             }
             return msg;
         }
+
     }
 }

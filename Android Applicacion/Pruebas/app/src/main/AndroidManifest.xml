@@ -34,7 +34,12 @@
         <activity android:name=".ConfigureQR" />
         <activity android:name=".ConfigureGPS" />
         <activity android:name=".ConfigurePIN" />
-        <activity android:name=".Abrir"></activity>
+        <activity android:name=".Abrir"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".Productos"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".CompartirLlave"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DailyDB.App_Code.Model
 {
-    class Llave
+    public class Llave
     {
         public int LlaveId { get; set; }
         public string Codigo { get; set; }

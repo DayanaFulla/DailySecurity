@@ -63,21 +63,21 @@ namespace DailyDB.App_Code.BRL
 
         }
 
-        public static Alarma GetAlarmaByIdUsuario(int idUsuario)
+        public static List<Alarma> GetAlarmaByIdUsuario(int idUsuario)
         {
             if (idUsuario <= 0 )
                 throw new ArgumentException("Id de usuario  o usuario es nula");
 
             DAL.AlarmaDSTableAdapters.AlarmaTableAdapter adapter = new DAL.AlarmaDSTableAdapters.AlarmaTableAdapter();
             AlarmaDS.AlarmaDataTable table = adapter.GetAlarmaByUsuarioId(idUsuario);
-            if (table.Rows.Count == 0)
-            {
-                throw new ArgumentException("Vacio o tal vez no existe");
-                return null;
-            }
 
-            Alarma alarma = GetAlarmaFromRow(table[0]);
-            return alarma;
+            List<Alarma> alarmas = new List<Alarma>();
+            foreach (AlarmaDS.AlarmaRow row in table)
+            {
+                Alarma alarma = GetAlarmaFromRow(row);
+                alarmas.Add(alarma);
+            }
+            return alarmas;
         }
 
         public static void DeleteAlarma(int idAlarma)

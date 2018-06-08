@@ -23,9 +23,12 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONObject;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+import daily.pruebaconexion.Modelo.Llave;
 import daily.pruebaconexion.Modelo.Usuario;
+import daily.pruebaconexion.Servicio.LlaveService;
 
 public class ConfigurePIN extends AppCompatActivity {
 
@@ -48,8 +51,11 @@ public class ConfigurePIN extends AppCompatActivity {
             public void onClick(View view) {
                 if(!txtPin1.getText().toString().equals(txtPin2.getText().toString())){
                     txtERROR.setText("INGRESE EL MISMO PIN");
-                }else {
+                }else if(txtNOMBRE.getText().equals("")|| txtNOMBRE.getText().length() <=0 ){
+                    txtERROR.setText("INGRESE UN NOMBRE A LA LLAVE");
+                }else{
                     listo();
+
                 }
             }
         });
@@ -85,18 +91,21 @@ public class ConfigurePIN extends AppCompatActivity {
                 if(response.toString().equals("\"BIEN\"")){
                     //loadinBar.setVisibility(View.INVISIBLE);
                     Log.e("OK:", "EXITO en ");
-                    showMessageDialog("Mensaje", "Se configuro con Exito.");
+                    GenerarLlave();
                 }else if (response.equals("\"ERROR\"")){
                     //loadinBar.setVisibility(View.INVISIBLE);
-                    Log.i("ERROR", response.toString()+"   VERIFICACION");
-                    Toast.makeText(ConfigurePIN.this, "Verifique su cuenta en la WEB", Toast.LENGTH_LONG).show();
+                    Log.i("ERROR", response.toString()+"::: Configuracion");
+                    Toast.makeText(ConfigurePIN.this, "Configuracion", Toast.LENGTH_LONG).show();
+                    showMessageDialog("ERROR","Error en Configuracion", 1);
                 }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 //loadinBar.setVisibility(View.INVISIBLE);
+
                 Log.e("Error ALARMA:", error.toString());
+                showMessageDialog("ERROR","Error en Configuracion", 1);
                 //Toast.makeText(LoginActivity.this, "Error: " + error.toString()+" esto", Toast.LENGTH_LONG).show();
                 if (error.networkResponse.statusCode == 404) {
                     Toast.makeText(ConfigurePIN.this, "ERROR 404", Toast.LENGTH_LONG).show();
@@ -128,26 +137,41 @@ public class ConfigurePIN extends AppCompatActivity {
         requestQueue.add(stringRequest);
     }
 
-    public void showMessageDialog(String titulo,String message) {
+    public void GenerarLlave(){
+        Llave llave = new Llave();
+        llave.setCodigo(Llave.generadorCodigo());
+        llave.setEstado(0);
+        llave.setTipo("P");
+        llave.setNick("Propietario");
+        llave.setAlarmaId(ConfigureQR.ID);
+        llave.setNombre(txtNOMBRE.getText().toString().trim());
+        llave.setUsuarioId(Usuario.getInstance().getUsuarioID());
+        List<String> result = LlaveService.crearLlavePermanente(llave,ConfigurePIN.this);
+        List<String> result2 = LlaveService.ConfirmarLlave(llave, ConfigurePIN.this);
+        if(result.size() == 1 && result2.size()==1){
+            showMessageDialog("EXITO","Se configuro con Exito", 0);
+        }else{
+            showMessageDialog("ERROR","Error en crear Llave", 1);
+        }
+    }
+
+    public void showMessageDialog(String titulo,String message, int error) {
 
         AlertDialog.Builder dialogo = new AlertDialog.Builder(this);
         dialogo.setTitle(titulo);
         dialogo.setMessage(message);
         dialogo.setCancelable(false);
 
-        dialogo.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                Intent intent = new Intent(ConfigurePIN.this, Principal.class);
-                startActivity(intent);
+        if(error == 0){
+            dialogo.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    Intent intent = new Intent(ConfigurePIN.this, Principal.class);
+                    startActivity(intent);
 
-            }
-        });
-        /*dialogo.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialogInterface, int id) {
-                //codigo
-            }
-        });*/
+                }
+            });
+        }
         dialogo.show();
     }
 }

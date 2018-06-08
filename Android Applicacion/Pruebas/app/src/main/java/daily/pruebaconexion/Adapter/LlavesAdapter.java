@@ -8,34 +8,34 @@ import android.widget.BaseAdapter;
 import java.util.List;
 
 import daily.pruebaconexion.Handlers.LlavesItemAdapter;
-import daily.pruebaconexion.Modelo.Alarma;
+import daily.pruebaconexion.Modelo.Llave;
 
 public class LlavesAdapter extends BaseAdapter{
 
-    private List<Alarma> alarmas;
+    private List<Llave> llaves;
     private Context context;
 
-    public LlavesAdapter(List<Alarma> alarmas, Context context) {
-        this.alarmas = alarmas;
+    public LlavesAdapter(List<Llave> llaves, Context context) {
+        this.llaves = llaves;
         this.context = context;
     }
 
     public int getCount(){
-        return alarmas.size();
+        return llaves.size();
     }
 
-    public Alarma getItem(int position){
-        Alarma alarma = alarmas.get(position);
-        return alarma;
+    public Llave getItem(int position){
+        Llave obj = llaves.get(position);
+        return obj;
     }
 
     public long getItemId(int position) {
-        Alarma obj = alarmas.get(position);
-        return obj.getUsuarioID();
+        Llave obj = llaves.get(position);
+        return obj.getLlaveId();
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
-        Alarma obj = alarmas.get(position);
+        Llave obj = llaves.get(position);
         convertView = new LlavesItemAdapter(context, obj);
         return convertView;
     }

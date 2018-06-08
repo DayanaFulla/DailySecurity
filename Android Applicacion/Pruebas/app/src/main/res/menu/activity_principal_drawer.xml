@@ -8,23 +8,22 @@
         <item
             android:id="@+id/nsv_mis_llaves"
             android:icon="@drawable/ic_menu_keyme"
-
-            android:title="Mis Llaves"
+            android:title="Mis Cerraduras"
             />
         <item
             android:id="@+id/nsv_llaves"
             android:icon="@drawable/ic_menu_keys"
-            android:title="Llaves prestadas"
+            android:title="Otras Llaves"
             />
     </group>
 
-    <item android:title="Communicate">
+    <item android:title="Configuracion">
         <menu>
             <item
                 android:id="@+id/nav_configure"
                 android:icon="@drawable/add_key"
-                android:title="Configuración" />
-            <item
+                android:title="Añadir Llave Propia" />
+            <!--<item
                 android:id="@+id/nav_share"
                 android:icon="@drawable/ic_menu_share"
                 android:title="Share" />
@@ -32,7 +31,7 @@
                 android:id="@+id/nav_send"
                 android:icon="@drawable/ic_menu_send"
                 android:title="Send" />
-
+            -->
         </menu>
     </item>
 

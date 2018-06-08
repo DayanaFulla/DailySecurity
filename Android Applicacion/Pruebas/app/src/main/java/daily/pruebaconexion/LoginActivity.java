@@ -1,8 +1,6 @@
 package daily.pruebaconexion;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -94,7 +92,6 @@ public class LoginActivity extends AppCompatActivity {
                     String idUsuario = response.toString();
                     idUsuario = idUsuario.substring(1,idUsuario.length()-1);
                     Usuario.getInstance().setUsuarioID(Integer.parseInt(idUsuario));
-                    //idUsuario = idUsuario.substring(idUsuario.length()-1, idUsuario.length());
                     Toast.makeText(LoginActivity.this, "esto es lo que recibio: "+idUsuario, Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(LoginActivity.this, Principal.class);
                     startActivity(intent);

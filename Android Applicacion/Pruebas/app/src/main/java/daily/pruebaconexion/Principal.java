@@ -2,8 +2,6 @@ package daily.pruebaconexion;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -22,19 +20,15 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.LinkedList;
-import java.util.List;
 
 import daily.pruebaconexion.Adapter.LlavesAdapter;
-import daily.pruebaconexion.Modelo.Alarma;
 import daily.pruebaconexion.Modelo.Usuario;
+import daily.pruebaconexion.Servicio.LlaveService;
 import daily.pruebaconexion.Servicio.MySingleton;
 
 
@@ -42,7 +36,7 @@ public class Principal extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     ListView listView;
-
+    TextView txtUsuario;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,8 +44,13 @@ public class Principal extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        listView = findViewById(R.id.list_Keys);
         obtenerUsuario();
+
+        txtUsuario = findViewById(R.id.txtUser);
+
+        listView = findViewById(R.id.list_Keys);
+
+        //txtUsuario.setText("Tus Llaves:"+Usuario.getInstance().getNombre()+" "+Usuario.getInstance().getApellido());
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -61,6 +60,20 @@ public class Principal extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+
+        final LlavesAdapter adapter = new LlavesAdapter(LlaveService.actualizarLista(Principal.this),this);
+        listView.setAdapter(adapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                Intent intent = new Intent(Principal.this, Abrir.class);
+                View llave = adapter.getView(position,view,adapterView);
+                TextView txtUsr = llave.findViewById(R.id.txtLlaveID);
+                intent.putExtra("LLAVE_ID", Integer.parseInt(txtUsr.getText()+""));
+                Log.e("INFO:",txtUsr.getText()+"");
+                startActivity(intent);
+            }
+        });
 
     }
 
@@ -106,12 +119,9 @@ public class Principal extends AppCompatActivity
             Intent intent = new Intent(Principal.this, ConfigureQR.class);
             startActivity(intent);
         }else if (id == R.id.nsv_mis_llaves) {
-
+            Intent intent = new Intent(Principal.this, Productos.class);
+            startActivity(intent);
         }else if (id == R.id.nsv_llaves) {
-
-        }else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
 
         }
 
@@ -135,7 +145,7 @@ public class Principal extends AppCompatActivity
                             Usuario.getInstance().setTelefono(response.getString("Telefono"));
                             Usuario.getInstance().setCorreo(response.getString("Correo"));
 
-                            //txtUsuario.setText(Usuario.getInstance().getNombre()+" "+Usuario.getInstance().getApellido()+" Bienvenido");
+                            txtUsuario.setText("Tus Llaves: "+Usuario.getInstance().getNombre()+" "+Usuario.getInstance().getApellido());
                         } catch (JSONException e) {
                             e.printStackTrace();
                             Log.e("ERROR:", e.toString());
@@ -160,67 +170,4 @@ public class Principal extends AppCompatActivity
                 });
         MySingleton.getInstance(this).addToRequestQueue(jsonObjectRequest);
     }
-
-    private void actualizarLista(){
-        String url = "http://192.168.0.12:1234/api/Usuario/GetUsuario/"+Usuario.getInstance().getUsuarioID();
-
-        JsonArrayRequest jsonObjectRequest = new JsonArrayRequest
-            (Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
-
-                @Override
-                public void onResponse(JSONArray response) {
-                    List<Alarma> alarmas = new LinkedList<>();
-                    try {
-                        for (int i = 0; i < response.length(); i++) {
-                            Alarma alarma = new Alarma();
-                            alarma.setAlarmaId(response.getJSONObject(i).getInt("AlarmaId"));
-                            alarma.setCodigo(response.getJSONObject(i).getString("Codigo"));
-                            alarma.setEstado(response.getJSONObject(i).getInt("Estado"));
-                            alarma.setAlerta(response.getJSONObject(i).getInt("Alerta"));
-                            alarma.setLatitud(response.getJSONObject(i).getString("Latitud"));
-                            alarma.setLongitud(response.getJSONObject(i).getString("Longitud"));
-                            alarma.setUsuarioID(response.getJSONObject(i).getInt("UsuarioID"));
-                            alarma.setContrasena(response.getJSONObject(i).getString("Contrasena"));
-                            alarma.setNombre(response.getJSONObject(i).getString("Nombre"));
-                            alarmas.add(alarma);
-                        }
-
-                        LlavesAdapter adapter = new LlavesAdapter(alarmas,Principal.this);
-                        listView.setAdapter(adapter);
-                        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                            @Override
-                            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-                                Intent intent = new Intent(Principal.this, Abrir.class);
-                                intent.putExtra("LLAVE_ID", (int)id);
-                                startActivity(intent);
-                            }
-                        });
-
-
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                        Log.e("ERROR:", e.toString());
-                    }
-
-                }
-            }, new Response.ErrorListener() {
-
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    // TODO: Handle error
-                    if (error.networkResponse.statusCode == 404) {
-                        Log.e("ERROR:", "404");
-                    }else if(error.networkResponse == null){
-                        if(error.getClass().equals(TimeoutError.class)){
-                            Log.e("ERROR:", "NULL TIME");
-                        }
-                    }else{
-                        Log.e("ERROR:", error.toString());
-                    }
-                }
-            });
-        MySingleton.getInstance(this).addToRequestQueue(jsonObjectRequest);
-    }
-
-
 }
