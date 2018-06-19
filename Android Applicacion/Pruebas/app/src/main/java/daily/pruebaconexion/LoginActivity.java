@@ -14,6 +14,7 @@ import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.RetryPolicy;
 import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
@@ -67,7 +68,7 @@ public class LoginActivity extends AppCompatActivity {
             Log.e("Error Fatal:", e.toString());
         }
 
-        String url ="http://192.168.0.12:1234/api/Usuario/Login";
+        String url ="http://192.168.137.21:1234/api/Usuario/Login";
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
@@ -127,6 +128,23 @@ public class LoginActivity extends AppCompatActivity {
                 return map;
             }
         };
+
+        stringRequest.setRetryPolicy(new RetryPolicy() {
+            @Override
+            public int getCurrentTimeout() {
+                return 60000;
+            }
+
+            @Override
+            public int getCurrentRetryCount() {
+                return 60000;
+            }
+
+            @Override
+            public void retry(VolleyError error) throws VolleyError {
+                Log.e("time Error", "tiem error"+error.toString());
+            }
+        });
         requestQueue.add(stringRequest);
     }
 }

@@ -11,7 +11,6 @@ D:\Sistemas\9._I-2018\Ing._Software_3\DailySecurity\Softwares\Servicios\bin\rosl
 D:\Sistemas\9._I-2018\Ing._Software_3\DailySecurity\Softwares\Servicios\bin\roslyn\vbc.exe
 D:\Sistemas\9._I-2018\Ing._Software_3\DailySecurity\Softwares\Servicios\bin\roslyn\VBCSCompiler.exe
 D:\Sistemas\9._I-2018\Ing._Software_3\DailySecurity\Softwares\Servicios\bin\roslyn\VBCSCompiler.exe.config
-D:\Sistemas\9._I-2018\Ing._Software_3\DailySecurity\Softwares\Servicios\bin\Servicios.dll.config
 D:\Sistemas\9._I-2018\Ing._Software_3\DailySecurity\Softwares\Servicios\bin\Servicios.dll
 D:\Sistemas\9._I-2018\Ing._Software_3\DailySecurity\Softwares\Servicios\bin\Servicios.pdb
 D:\Sistemas\9._I-2018\Ing._Software_3\DailySecurity\Softwares\Servicios\bin\DailyDB.dll
@@ -41,3 +40,4 @@ D:\Sistemas\9._I-2018\Ing._Software_3\DailySecurity\Softwares\Servicios\bin\Syst
 D:\Sistemas\9._I-2018\Ing._Software_3\DailySecurity\Softwares\Servicios\obj\Debug\ServiciosWEB.csprojResolveAssemblyReference.cache
 D:\Sistemas\9._I-2018\Ing._Software_3\DailySecurity\Softwares\Servicios\obj\Debug\Servicios.dll
 D:\Sistemas\9._I-2018\Ing._Software_3\DailySecurity\Softwares\Servicios\obj\Debug\Servicios.pdb
+D:\Sistemas\9._I-2018\Ing._Software_3\DailySecurity\Softwares\Servicios\bin\Servicios.dll.config

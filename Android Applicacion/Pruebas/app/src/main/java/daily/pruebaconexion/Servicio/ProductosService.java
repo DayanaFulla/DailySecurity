@@ -31,7 +31,7 @@ public class ProductosService {
     private String jsonArray = "*";
 
     private void actualizarLista(Context context){
-        String url = "http://192.168.0.12:1234/api/Alarma/GetAlarmaByUsuario/"+ Usuario.getInstance().getUsuarioID();
+        String url = "http://192.168.137.21:1234/api/Alarma/GetAlarmaByUsuario/"+ Usuario.getInstance().getUsuarioID();
         RequestQueue queue = Volley.newRequestQueue(context);
 
 

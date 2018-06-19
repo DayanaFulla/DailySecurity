@@ -71,7 +71,7 @@ public class ConfigureQR extends AppCompatActivity implements ZBarScannerView.Re
     }
 
     public void obtenerAlarma(){
-        String url = "http://192.168.0.12:1234/api/Alarma/GetAlarmaByCodigo/"+CODIGO;
+        String url = "http://192.168.137.21:1234/api/Alarma/GetAlarmaByCodigo/"+CODIGO;
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
         (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {

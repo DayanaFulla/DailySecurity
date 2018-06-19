@@ -305,6 +305,10 @@ namespace DailyDB.App_Code.DAL {
             
             private global::System.Data.DataColumn columnNombre;
             
+            private global::System.Data.DataColumn columnActHora;
+            
+            private global::System.Data.DataColumn columnActDias;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public LlaveDataTable() {
@@ -444,6 +448,22 @@ namespace DailyDB.App_Code.DAL {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ActHoraColumn {
+                get {
+                    return this.columnActHora;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ActDiasColumn {
+                get {
+                    return this.columnActDias;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -479,7 +499,7 @@ namespace DailyDB.App_Code.DAL {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public LlaveRow AddLlaveRow(string Codigo, int Estado, System.TimeSpan HoraInicio, System.TimeSpan HoraFin, System.DateTime FechaInicio, System.DateTime FechaFin, int UsuarioId, int AlarmaId, string Tipo, string Nick, string Dias, string Nombre) {
+            public LlaveRow AddLlaveRow(string Codigo, int Estado, System.TimeSpan HoraInicio, System.TimeSpan HoraFin, System.DateTime FechaInicio, System.DateTime FechaFin, int UsuarioId, int AlarmaId, string Tipo, string Nick, string Dias, string Nombre, int ActHora, int ActDias) {
                 LlaveRow rowLlaveRow = ((LlaveRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -494,7 +514,9 @@ namespace DailyDB.App_Code.DAL {
                         Tipo,
                         Nick,
                         Dias,
-                        Nombre};
+                        Nombre,
+                        ActHora,
+                        ActDias};
                 rowLlaveRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowLlaveRow);
                 return rowLlaveRow;
@@ -537,6 +559,8 @@ namespace DailyDB.App_Code.DAL {
                 this.columnNick = base.Columns["Nick"];
                 this.columnDias = base.Columns["Dias"];
                 this.columnNombre = base.Columns["Nombre"];
+                this.columnActHora = base.Columns["ActHora"];
+                this.columnActDias = base.Columns["ActDias"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -568,6 +592,10 @@ namespace DailyDB.App_Code.DAL {
                 base.Columns.Add(this.columnDias);
                 this.columnNombre = new global::System.Data.DataColumn("Nombre", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnNombre);
+                this.columnActHora = new global::System.Data.DataColumn("ActHora", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnActHora);
+                this.columnActDias = new global::System.Data.DataColumn("ActDias", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnActDias);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnLlaveId}, true));
                 this.columnLlaveId.AutoIncrement = true;
@@ -922,6 +950,38 @@ namespace DailyDB.App_Code.DAL {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int ActHora {
+                get {
+                    try {
+                        return ((int)(this[this.tableLlave.ActHoraColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ActHora\' in table \'Llave\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableLlave.ActHoraColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int ActDias {
+                get {
+                    try {
+                        return ((int)(this[this.tableLlave.ActDiasColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ActDias\' in table \'Llave\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableLlave.ActDiasColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsCodigoNull() {
                 return this.IsNull(this.tableLlave.CodigoColumn);
             }
@@ -1050,6 +1110,30 @@ namespace DailyDB.App_Code.DAL {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetNombreNull() {
                 this[this.tableLlave.NombreColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsActHoraNull() {
+                return this.IsNull(this.tableLlave.ActHoraColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetActHoraNull() {
+                this[this.tableLlave.ActHoraColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsActDiasNull() {
+                return this.IsNull(this.tableLlave.ActDiasColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetActDiasNull() {
+                this[this.tableLlave.ActDiasColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -1225,6 +1309,8 @@ namespace DailyDB.App_Code.DAL.LlaveDSTableAdapters {
             tableMapping.ColumnMappings.Add("Nick", "Nick");
             tableMapping.ColumnMappings.Add("Dias", "Dias");
             tableMapping.ColumnMappings.Add("Nombre", "Nombre");
+            tableMapping.ColumnMappings.Add("ActHora", "ActHora");
+            tableMapping.ColumnMappings.Add("ActDias", "ActDias");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
@@ -1242,6 +1328,11 @@ namespace DailyDB.App_Code.DAL.LlaveDSTableAdapters {
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Tipo", global::System.Data.SqlDbType.NChar, 1, global::System.Data.ParameterDirection.Input, 0, 0, "Tipo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Nick", global::System.Data.SqlDbType.NVarChar, 30, global::System.Data.ParameterDirection.Input, 0, 0, "Nick", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@AlarmaId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 10, 0, "AlarmaId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HoraInicio", global::System.Data.SqlDbType.Time, 5, global::System.Data.ParameterDirection.Input, 16, 7, "HoraInicio", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HoraFin", global::System.Data.SqlDbType.Time, 5, global::System.Data.ParameterDirection.Input, 16, 7, "HoraFin", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Dias", global::System.Data.SqlDbType.NVarChar, 21, global::System.Data.ParameterDirection.Input, 0, 0, "Dias", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ActHora", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 10, 0, "ActHora", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ActDias", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 10, 0, "ActDias", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@LlaveId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.InputOutput, 10, 0, "LlaveId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
@@ -1257,6 +1348,8 @@ namespace DailyDB.App_Code.DAL.LlaveDSTableAdapters {
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FechaFin", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 10, 0, "FechaFin", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Dias", global::System.Data.SqlDbType.NVarChar, 21, global::System.Data.ParameterDirection.Input, 0, 0, "Dias", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Nombre", global::System.Data.SqlDbType.NVarChar, 30, global::System.Data.ParameterDirection.Input, 0, 0, "Nombre", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ActHora", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 10, 0, "ActHora", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ActDias", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 10, 0, "ActDias", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@LlaveId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 10, 0, "LlaveId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
@@ -1317,6 +1410,8 @@ namespace DailyDB.App_Code.DAL.LlaveDSTableAdapters {
             this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FechaFin", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@AlarmaId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Dias", global::System.Data.SqlDbType.NVarChar, 21, global::System.Data.ParameterDirection.Input, 0, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ActHora", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ActDias", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@LlaveId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.InputOutput, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[6] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[6].Connection = this.Connection;
@@ -1479,7 +1574,7 @@ namespace DailyDB.App_Code.DAL.LlaveDSTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string Codigo, global::System.Nullable<int> Estado, string Tipo, string Nick, global::System.Nullable<int> AlarmaId, ref global::System.Nullable<int> LlaveId) {
+        public virtual int Insert(string Codigo, global::System.Nullable<int> Estado, string Tipo, string Nick, global::System.Nullable<int> AlarmaId, global::System.Nullable<global::System.TimeSpan> HoraInicio, global::System.Nullable<global::System.TimeSpan> HoraFin, string Dias, global::System.Nullable<int> ActHora, global::System.Nullable<int> ActDias, ref global::System.Nullable<int> LlaveId) {
             if ((Codigo == null)) {
                 this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
@@ -1510,11 +1605,41 @@ namespace DailyDB.App_Code.DAL.LlaveDSTableAdapters {
             else {
                 this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
-            if ((LlaveId.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[6].Value = ((int)(LlaveId.Value));
+            if ((HoraInicio.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[6].Value = ((System.TimeSpan)(HoraInicio.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
+            }
+            if ((HoraFin.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[7].Value = ((System.TimeSpan)(HoraFin.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[7].Value = global::System.DBNull.Value;
+            }
+            if ((Dias == null)) {
+                this.Adapter.InsertCommand.Parameters[8].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[8].Value = ((string)(Dias));
+            }
+            if ((ActHora.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[9].Value = ((int)(ActHora.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[9].Value = global::System.DBNull.Value;
+            }
+            if ((ActDias.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[10].Value = ((int)(ActDias.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[10].Value = global::System.DBNull.Value;
+            }
+            if ((LlaveId.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[11].Value = ((int)(LlaveId.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[11].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -1523,12 +1648,12 @@ namespace DailyDB.App_Code.DAL.LlaveDSTableAdapters {
             }
             try {
                 int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
-                if (((this.Adapter.InsertCommand.Parameters[6].Value == null) 
-                            || (this.Adapter.InsertCommand.Parameters[6].Value.GetType() == typeof(global::System.DBNull)))) {
+                if (((this.Adapter.InsertCommand.Parameters[11].Value == null) 
+                            || (this.Adapter.InsertCommand.Parameters[11].Value.GetType() == typeof(global::System.DBNull)))) {
                     LlaveId = new global::System.Nullable<int>();
                 }
                 else {
-                    LlaveId = new global::System.Nullable<int>(((int)(this.Adapter.InsertCommand.Parameters[6].Value)));
+                    LlaveId = new global::System.Nullable<int>(((int)(this.Adapter.InsertCommand.Parameters[11].Value)));
                 }
                 return returnValue;
             }
@@ -1543,7 +1668,7 @@ namespace DailyDB.App_Code.DAL.LlaveDSTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string Nick, global::System.Nullable<int> Estado, string Tipo, global::System.Nullable<global::System.TimeSpan> HoraInicio, global::System.Nullable<global::System.TimeSpan> HoraFin, global::System.Nullable<global::System.DateTime> FechaInicio, global::System.Nullable<global::System.DateTime> FechaFin, string Dias, string Nombre, global::System.Nullable<int> LlaveId) {
+        public virtual int Update(string Nick, global::System.Nullable<int> Estado, string Tipo, global::System.Nullable<global::System.TimeSpan> HoraInicio, global::System.Nullable<global::System.TimeSpan> HoraFin, global::System.Nullable<global::System.DateTime> FechaInicio, global::System.Nullable<global::System.DateTime> FechaFin, string Dias, string Nombre, global::System.Nullable<int> ActHora, global::System.Nullable<int> ActDias, global::System.Nullable<int> LlaveId) {
             if ((Nick == null)) {
                 this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
@@ -1598,11 +1723,23 @@ namespace DailyDB.App_Code.DAL.LlaveDSTableAdapters {
             else {
                 this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(Nombre));
             }
-            if ((LlaveId.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((int)(LlaveId.Value));
+            if ((ActHora.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((int)(ActHora.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
+            }
+            if ((ActDias.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((int)(ActDias.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
+            }
+            if ((LlaveId.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((int)(LlaveId.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -1623,7 +1760,7 @@ namespace DailyDB.App_Code.DAL.LlaveDSTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int InsertLlaveTemporal(string Codigo, global::System.Nullable<int> Estado, string Tipo, string Nick, global::System.Nullable<global::System.TimeSpan> HoraInicio, global::System.Nullable<global::System.TimeSpan> HoraFin, global::System.Nullable<global::System.DateTime> FechaInicio, global::System.Nullable<global::System.DateTime> FechaFin, global::System.Nullable<int> AlarmaId, string Dias, ref global::System.Nullable<int> LlaveId) {
+        public virtual int InsertLlaveTemporal(string Codigo, global::System.Nullable<int> Estado, string Tipo, string Nick, global::System.Nullable<global::System.TimeSpan> HoraInicio, global::System.Nullable<global::System.TimeSpan> HoraFin, global::System.Nullable<global::System.DateTime> FechaInicio, global::System.Nullable<global::System.DateTime> FechaFin, global::System.Nullable<int> AlarmaId, string Dias, global::System.Nullable<int> ActHora, global::System.Nullable<int> ActDias, ref global::System.Nullable<int> LlaveId) {
             global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[5];
             if ((Codigo == null)) {
                 command.Parameters[1].Value = global::System.DBNull.Value;
@@ -1685,11 +1822,23 @@ namespace DailyDB.App_Code.DAL.LlaveDSTableAdapters {
             else {
                 command.Parameters[10].Value = ((string)(Dias));
             }
-            if ((LlaveId.HasValue == true)) {
-                command.Parameters[11].Value = ((int)(LlaveId.Value));
+            if ((ActHora.HasValue == true)) {
+                command.Parameters[11].Value = ((int)(ActHora.Value));
             }
             else {
                 command.Parameters[11].Value = global::System.DBNull.Value;
+            }
+            if ((ActDias.HasValue == true)) {
+                command.Parameters[12].Value = ((int)(ActDias.Value));
+            }
+            else {
+                command.Parameters[12].Value = global::System.DBNull.Value;
+            }
+            if ((LlaveId.HasValue == true)) {
+                command.Parameters[13].Value = ((int)(LlaveId.Value));
+            }
+            else {
+                command.Parameters[13].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
             if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -1705,12 +1854,12 @@ namespace DailyDB.App_Code.DAL.LlaveDSTableAdapters {
                     command.Connection.Close();
                 }
             }
-            if (((command.Parameters[11].Value == null) 
-                        || (command.Parameters[11].Value.GetType() == typeof(global::System.DBNull)))) {
+            if (((command.Parameters[13].Value == null) 
+                        || (command.Parameters[13].Value.GetType() == typeof(global::System.DBNull)))) {
                 LlaveId = new global::System.Nullable<int>();
             }
             else {
-                LlaveId = new global::System.Nullable<int>(((int)(command.Parameters[11].Value)));
+                LlaveId = new global::System.Nullable<int>(((int)(command.Parameters[13].Value)));
             }
             return returnValue;
         }

@@ -61,7 +61,7 @@ public class Productos extends AppCompatActivity {
     }
 
     public void actualizarLista(){
-        String url = "http://192.168.0.12:1234/api/Alarma/GetAlarmaByUsuario/"+ Usuario.getInstance().getUsuarioID();
+        String url = "http://192.168.137.21:1234/api/Alarma/GetAlarmaByUsuario/"+ Usuario.getInstance().getUsuarioID();
         final List<Alarma> alarms = new LinkedList<>();
         JsonArrayRequest jsonObjectRequest = new JsonArrayRequest
                 (Request.Method.GET, url, null, new Response.Listener<JSONArray>() {

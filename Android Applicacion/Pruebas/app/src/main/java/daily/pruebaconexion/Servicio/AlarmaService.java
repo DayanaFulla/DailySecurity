@@ -36,7 +36,7 @@ public class AlarmaService {
     }
 
     public static List<Alarma> actualiseList(final Context context){
-        String url = "http://192.168.0.12:1234/api/Alarma/GetAlarmaByUsuario/"+ Usuario.getInstance().getUsuarioID();
+        String url = "http://192.168.137.21:1234/api/Alarma/GetAlarmaByUsuario/"+ Usuario.getInstance().getUsuarioID();
         final List<Alarma> alarmas = new LinkedList<>();
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         JsonArrayRequest jsonObjectRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {

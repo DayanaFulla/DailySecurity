@@ -37,7 +37,7 @@ import daily.pruebaconexion.Modelo.Usuario;
 public class LlaveService {
 
     public static List<Llave> actualizarLista(final Context context){
-        String url = "http://192.168.0.12:1234/api/Llave/GetLlavesPropias/"+ Usuario.getInstance().getUsuarioID();
+        String url = "http://192.168.137.21:1234/api/Llave/GetLlavesPropias/"+ Usuario.getInstance().getUsuarioID();
         final List<Llave> llaves = new LinkedList<>();
         JsonArrayRequest jsonObjectRequest = new JsonArrayRequest
         (Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
@@ -114,7 +114,7 @@ public class LlaveService {
             Log.e("Error JSON:", e.toString());
         }
 
-        String url ="http://192.168.0.12:1234/api/Llave/InsertLlave";
+        String url ="http://192.168.137.21:1234/api/Llave/InsertLlave";
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
@@ -182,7 +182,7 @@ public class LlaveService {
             Log.e("Error JSON:", e.toString());
         }
 
-        String url ="http://192.168.0.12:1234/api/Llave/UpdateConfirmar";
+        String url ="http://192.168.137.21:1234/api/Llave/UpdateConfirmar";
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
@@ -235,7 +235,7 @@ public class LlaveService {
     }
 
     public static Integer CantidadPrestadas(final Context context,final String alarmaID , final String UsuarioId){
-        String url = "http://192.168.0.12:1234/api/Llave/GetLlavesPrestadas";
+        String url = "http://192.168.137.21:1234/api/Llave/GetLlavesPrestadas";
         final Integer[] lista = new Integer[1];
         //Toast.makeText(LoginActivity.this, "Entro a Ingresar", Toast.LENGTH_LONG).show();
         JSONObject jsonBody = new JSONObject();

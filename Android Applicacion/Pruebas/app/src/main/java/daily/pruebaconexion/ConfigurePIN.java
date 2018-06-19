@@ -82,7 +82,7 @@ public class ConfigurePIN extends AppCompatActivity {
             Log.e("Error JSON:", e.toString());
         }
 
-        String url ="http://192.168.0.12:1234/api/Alarma/UpdateAlarma";
+        String url ="http://192.168.137.21:1234/api/Alarma/UpdateAlarma";
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override

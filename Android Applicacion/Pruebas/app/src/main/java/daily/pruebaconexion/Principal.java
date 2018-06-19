@@ -132,7 +132,7 @@ public class Principal extends AppCompatActivity
 
 
     public void obtenerUsuario(){
-        String url = "http://192.168.0.12:1234/api/Usuario/GetUsuario/"+Usuario.getInstance().getUsuarioID();
+        String url = "http://192.168.137.21:1234/api/Usuario/GetUsuario/"+Usuario.getInstance().getUsuarioID();
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
                 (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
