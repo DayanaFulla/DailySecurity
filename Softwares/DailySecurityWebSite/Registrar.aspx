@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Ingresar</title>
+    <title>DailySecurity</title>
 
     <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png" />
     <link rel="icon" type="image/png" href="../assets/img/favicon.png" />
@@ -28,49 +28,47 @@
     <link href="assets/css/extra.css" rel="stylesheet" />
 
 </head>
-<body class="body-daily">
+<body class="body-daily" style="display: block; background-image: url(assets/img/intro-bg.jpg); background-size: 100%; background-attachment: fixed;">
 
-    <form runat="server">
-        <div class="rounded mx-auto d-block fondito" style="width: 600px;">
-            <h1 class="h3 mb-3" id="titulo2" style="width: 100%; text-align: center;">REGISTRO</h1>
-            <div class="Form" style="width: 300px; display: block; margin-left: 60px; margin-right: auto">
-                <div class="form-group">
-                    <label for="txtNombre" id="lb-daily8">Nombre(s):</label>
-                    <asp:TextBox type="text" CssClass="form-control input-daily" ID="txtNombre" runat="server" aria-describedby="Nombre" />
-                    <span class="bmd-help">Ingrese su nombre completo</span>
-                </div>
-                <div class="form-group">
-                    <label for="txtApellido" id="lb-daily9">Apellido(s):</label>
-                    <asp:TextBox type="text" CssClass="form-control input-daily" ID="txtApellido" runat="server" aria-describedby="Apellido" />
-                    <span class="bmd-help">Ingrese su(s) apellido(s)</span>
-                </div>
-                <div class="form-group">
-                    <label for="txtTelefono" id="lb-daily10">Telefono:</label>
-                    <asp:TextBox type="tel" CssClass="form-control input-daily" ID="txtTelefono" runat="server" aria-describedby="Telefono" />
-                    <span class="bmd-help">Número de Teléfono</span>
-                </div>
-                <div class="form-group">
-                    <label for="txtEmail" id="lb-daily11">Correo Electrónico:</label>
-                    <asp:TextBox type="email" CssClass="form-control input-daily" ID="txtEmail" runat="server" aria-describedby="emailHelp" />
-                    <span class="bmd-help">Ingresar correo electrónico</span>
-                </div>
-                <div class="form-group">
-                    <label for="txtContrasena" id="lb-daily12">Contraseña</label>
-                    <asp:TextBox type="password" CssClass="form-control input-daily" ID="txtContrasena" runat="server" />
-                    <span class="bmd-help">Contraseña secreta </span>
+    <form runat="server" style="display: block; width: 700px; margin-top: 50px; margin-left: auto; margin-right: auto;">
+        <div style="width: 700px; display:block; border:solid; border-color:white; border-width:1px; ">
+            <h1 style="text-align:center; font-family:Quantify; color:white;">Registrar</h1>
+            <div style="display: flex;" >
+                <div class="Form" style="width: 350px;  display: block; margin-left:100px;">
+                    <div class="form-group">
+                        <label for="txtNombre" id="lb-daily8">Nombre(s):</label><br />
+                        <asp:TextBox type="text" CssClass="form-control input-daily"  ID="txtNombre" runat="server" aria-describedby="Nombre" /><br />
+                        <span class="bmd-help">Ingrese su nombre completo</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtApellido" id="lb-daily9">Apellido(s):</label>
+                        <asp:TextBox type="text" CssClass="form-control input-daily" ID="txtApellido" runat="server" aria-describedby="Apellido" />
+                        <span class="bmd-help">Ingrese su(s) apellido(s)</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtTelefono" id="lb-daily10">Telefono:</label>
+                        <asp:TextBox type="tel" CssClass="form-control input-daily" ID="txtTelefono" runat="server" aria-describedby="Telefono" />
+                        <span class="bmd-help">Número de Teléfono</span>
+                    </div>
+
                 </div>
 
-                <asp:Button ID="btnGuardar" runat="server" Text="REGISTRAR" OnClick="btnGuardar_Click" CssClass="btn btn-daily" />
+                <div style="width: 350px; display: block; margin-left: auto; margin-right: auto; ">
+                    <div class="form-group">
+                        <label for="txtEmail" id="lb-daily11">Correo Electrónico:</label>
+                        <asp:TextBox type="email" CssClass="form-control input-daily" ID="txtEmail" runat="server" aria-describedby="emailHelp" />
+                        <span class="bmd-help">Ingresar correo electrónico</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtContrasena" id="lb-daily12">Contraseña</label>
+                        <asp:TextBox type="password" CssClass="form-control input-daily" ID="txtContrasena" runat="server" />
+                        <span class="bmd-help">Contraseña secreta </span>
+                    </div>
+                </div>
             </div>
-
-            <div style="width: 200px;margin-left:45%;">
-                <a href="Home.aspx">
-                    <img src="assets/img/alarma-purple.png" style="margin-top: -800px; width: 200px;margin-left:50%;" /></a>
-            </div>
-
+            <asp:Button ID="btnGuardar" runat="server" Text="REGISTRAR" OnClick="btnGuardar_Click" style="display:block; width:70%; margin-left:auto; margin-right:auto;" CssClass="btn btn-daily" />
         </div>
-
-
+        
     </form>
 </body>
 

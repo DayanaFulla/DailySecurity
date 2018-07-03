@@ -48,6 +48,9 @@
     <Compile Include="App_Code\BRL\UsuarioBRL.cs" />
     <Compile Include="App_Code\BRL\VerificacionBRL.cs" />
     <Compile Include="App_Code\BRL\VersionBRL.cs" />
+    <Compile Include="App_Code\DAL\AlarmaDS.cs">
+      <DependentUpon>AlarmaDS.xsd</DependentUpon>
+    </Compile>
     <Compile Include="App_Code\DAL\AlarmaDS.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

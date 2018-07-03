@@ -26,8 +26,8 @@ namespace DailyDB.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=YOSHIDE\\SQLEXPRESS;Initial Catalog=DailySecurityDB;Integrated Securit" +
-            "y=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=LAPTOP-QC4O1AGO\\SQLEXPRESS;Initial Catalog=DailySecurityDB;Integrated" +
+            " Security=True")]
         public string DailySecurityDBConnectionString {
             get {
                 return ((string)(this["DailySecurityDBConnectionString"]));

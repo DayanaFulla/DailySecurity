@@ -144,7 +144,7 @@
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="UsuarioId" msprop:Generator_ColumnVarNameInTable="columnUsuarioId" msprop:Generator_ColumnPropNameInRow="UsuarioId" msprop:Generator_ColumnPropNameInTable="UsuarioIdColumn" msprop:Generator_UserColumnName="UsuarioId" type="xs:int" minOccurs="0" />
+              <xs:element name="UsuarioId" msprop:Generator_ColumnVarNameInTable="columnUsuarioId" msprop:Generator_ColumnPropNameInRow="UsuarioId" msprop:Generator_ColumnPropNameInTable="UsuarioIdColumn" msprop:Generator_UserColumnName="UsuarioId" type="xs:int" default="-1" minOccurs="0" />
               <xs:element name="Contrasena" msprop:Generator_ColumnVarNameInTable="columnContrasena" msprop:Generator_ColumnPropNameInRow="Contrasena" msprop:Generator_ColumnPropNameInTable="ContrasenaColumn" msprop:Generator_UserColumnName="Contrasena" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">

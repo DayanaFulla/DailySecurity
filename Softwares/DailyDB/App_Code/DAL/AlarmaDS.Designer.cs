@@ -524,6 +524,7 @@ namespace DailyDB.App_Code.DAL {
                 this.columnCodigo.MaxLength = 10;
                 this.columnLatitud.MaxLength = 20;
                 this.columnLongitud.MaxLength = 20;
+                this.columnUsuarioId.DefaultValue = ((int)(0));
                 this.columnContrasena.MaxLength = 50;
                 this.columnNombre.MaxLength = 30;
             }

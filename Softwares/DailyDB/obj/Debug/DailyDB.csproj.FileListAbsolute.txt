@@ -4,3 +4,9 @@ D:\Sistemas\9._I-2018\Ing._Software_3\DailySecurity\Softwares\DailyDB\bin\Debug\
 D:\Sistemas\9._I-2018\Ing._Software_3\DailySecurity\Softwares\DailyDB\bin\Debug\DailyDB.pdb
 D:\Sistemas\9._I-2018\Ing._Software_3\DailySecurity\Softwares\DailyDB\obj\Debug\DailyDB.dll
 D:\Sistemas\9._I-2018\Ing._Software_3\DailySecurity\Softwares\DailyDB\obj\Debug\DailyDB.pdb
+E:\7moSemestre\Ingeniería de Software III\DailySecurity\Softwares\DailyDB\bin\Debug\DailyDB.dll.config
+E:\7moSemestre\Ingeniería de Software III\DailySecurity\Softwares\DailyDB\bin\Debug\DailyDB.dll
+E:\7moSemestre\Ingeniería de Software III\DailySecurity\Softwares\DailyDB\bin\Debug\DailyDB.pdb
+E:\7moSemestre\Ingeniería de Software III\DailySecurity\Softwares\DailyDB\obj\Debug\DailyDB.csprojResolveAssemblyReference.cache
+E:\7moSemestre\Ingeniería de Software III\DailySecurity\Softwares\DailyDB\obj\Debug\DailyDB.dll
+E:\7moSemestre\Ingeniería de Software III\DailySecurity\Softwares\DailyDB\obj\Debug\DailyDB.pdb

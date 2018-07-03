@@ -81,7 +81,7 @@ public partial class Registrar : System.Web.UI.Page
             Enviar(US_email);
             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('El Usuario se ha registrado Exitosamente!!!')", true);
 
-            Response.Redirect("~/Registrar.aspx");
+            Response.Redirect("~/Home.aspx");
         }else
         {
             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('El correo electrónico indicado ya está registrado')", true);

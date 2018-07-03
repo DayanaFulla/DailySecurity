@@ -18,12 +18,12 @@ namespace DailyDB.App_Code.BRL
             alarma.Estado = row.Estado;
             if (alarma.Estado == 1)
             {
-                alarma.Alerta = row.Alerta;
-                alarma.Latitud = row.Latitud;
-                alarma.Longitud = row.Longitud;
-                alarma.UsuarioID = row.UsuarioId;
-                alarma.Contrasena = row.Contrasena;
-                alarma.Nombre = row.Nombre;
+                alarma.Alerta = row.IsAlertaNull() ? 0 : row.Alerta;
+                alarma.Latitud = row.IsLatitudNull()? "" : row.Latitud;
+                alarma.Longitud = row.IsLongitudNull() ? "" : row.Longitud;
+                alarma.UsuarioID = row.IsUsuarioIdNull() ? -1 : row.UsuarioId;
+                alarma.Contrasena = row.IsContrasenaNull() ? "" : row.Contrasena;
+                alarma.Nombre = row.IsNombreNull() ? "" : row.Nombre;
                 return alarma;
             }
             return alarma;
@@ -93,7 +93,7 @@ namespace DailyDB.App_Code.BRL
         {
             if (alrm == null)
                 throw new ArgumentException("No hay Alarma");
-
+            
             DAL.AlarmaDSTableAdapters.AlarmaTableAdapter adapter = new DAL.AlarmaDSTableAdapters.AlarmaTableAdapter();
             adapter.Update(alrm.AlarmaId, alrm.Estado, alrm.Alerta, alrm.Latitud, alrm.Longitud, alrm.Contrasena, alrm.Nombre, alrm.UsuarioID);
         }
