@@ -25,6 +25,6 @@ public class LlavesItemAdapter extends LinearLayout{
 
         txtNombreLlave.setText(llave.getNombre());
         txtActive.setText(llave.getEstado() == 1 ? "ACTIVADO" : "DESACTIVADO");
-        txtKeyID.setText(llave.getLlaveId()+"");
+        txtKeyID.setText(llave.getLlaveId() + "");
     }
 }

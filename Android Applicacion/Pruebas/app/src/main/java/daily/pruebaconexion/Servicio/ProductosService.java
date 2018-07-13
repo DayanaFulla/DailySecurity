@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+import daily.pruebaconexion.Extras.VarGlobal;
 import daily.pruebaconexion.Modelo.Alarma;
 import daily.pruebaconexion.Modelo.Usuario;
 import daily.pruebaconexion.Productos;
@@ -31,7 +32,7 @@ public class ProductosService {
     private String jsonArray = "*";
 
     private void actualizarLista(Context context){
-        String url = "http://192.168.137.21:1234/api/Alarma/GetAlarmaByUsuario/"+ Usuario.getInstance().getUsuarioID();
+        String url = "http://"+ VarGlobal.IP+":1234/api/Alarma/GetAlarmaByUsuario/"+ Usuario.getInstance().getUsuarioID();
         RequestQueue queue = Volley.newRequestQueue(context);
 
 

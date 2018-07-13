@@ -17,6 +17,8 @@ public class Llave {
     private String Dias;
     private int UsuarioId;
     private String Nombre;
+    private int ActHora;
+    private int ActDias;
 
     public Llave() {
     }
@@ -125,13 +127,29 @@ public class Llave {
         Nombre = nombre;
     }
 
+    public int getActHora() {
+        return ActHora;
+    }
+
+    public void setActHora(int actHora) {
+        ActHora = actHora;
+    }
+
+    public int getActDias() {
+        return ActDias;
+    }
+
+    public void setActDias(int actDias) {
+        ActDias = actDias;
+    }
+
     public static String generadorCodigo(){
         String palabra = "";
-        char[] codigo = new char[] { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'Ñ', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'ñ', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9','=','|','+','-','|','@','Ì','´' };
+        char[] codigo = new char[] { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9','=','|','+','-','|','@','Ì','´' };
 
         for (int i = 0; i < 12; i++)
         {
-            int numero = (int) (Math.random()*63);
+            int numero = (int) (Math.random()*61);
             palabra = palabra + codigo[numero];
         }
         return palabra;

@@ -6,11 +6,10 @@ import android.view.LayoutInflater;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import daily.pruebaconexion.BRL.LlaveBRL;
 import daily.pruebaconexion.Modelo.Alarma;
-import daily.pruebaconexion.Modelo.Llave;
 import daily.pruebaconexion.Modelo.Usuario;
 import daily.pruebaconexion.R;
-import daily.pruebaconexion.Servicio.LlaveService;
 
 public class CerradurasItemAdapter  extends LinearLayout{
     private TextView txtNombreAlarma,txtCantidad, txtAlarma, txtAlarmaId;
@@ -30,11 +29,13 @@ public class CerradurasItemAdapter  extends LinearLayout{
         //String nombre =  alarma.getNombre()+"";
 
         txtNombreAlarma.setText(alarma.getNombre()+"");
-        txtAlarma.setText("Alarma: "+(alarma.getEstado() == 1 ? "ACTIVADA" : "DESACTIVADA"));
+        if(alarma.getAlerta() == 0){
+            txtAlarma.setText("Alarma: DESACTIVADA");
+        }else{
+            txtAlarma.setText("Alarma: ACTIVADA");
+        }
 
-        Integer cantidad = LlaveService.CantidadPrestadas(context, alarma.getAlarmaId()+"", Usuario.getInstance().getUsuarioID()+"");
-        Log.e("cantidad",cantidad+"");
-        txtCantidad.setText("Llaves:"+cantidad+"");
+        Integer cantidad = LlaveBRL.CantidadPrestadas(txtCantidad ,context, alarma.getAlarmaId()+"", Usuario.getInstance().getUsuarioID()+"");
         txtAlarmaId.setText(alarma.getAlarmaId()+"");
     }
 

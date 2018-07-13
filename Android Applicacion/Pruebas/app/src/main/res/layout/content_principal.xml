@@ -15,8 +15,8 @@
         android:layout_height="wrap_content"
         android:text="Tus Llaves:"
         android:textColor="@android:color/black"
-        android:textSize="24sp"
-        app:fontFamily="@font/titulofont" />
+        android:textSize="22sp"
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/txtMensajeList"

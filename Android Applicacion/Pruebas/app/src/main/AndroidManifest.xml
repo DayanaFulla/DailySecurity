@@ -2,11 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="daily.pruebaconexion">
 
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
 
     <application
         android:allowBackup="true"
@@ -31,15 +31,33 @@
             android:name=".Principal"
             android:label="@string/title_activity_principal"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ConfigureQR" />
-        <activity android:name=".ConfigureGPS" />
-        <activity android:name=".ConfigurePIN" />
-        <activity android:name=".Abrir"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".Productos"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".CompartirLlave"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".ConfigureQR"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ConfigureGPS"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ConfigurePIN"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Abrir"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Productos"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".CompartirLlave"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".AdministracionLlaves"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".EditarLlave" />
+        <activity
+            android:name=".LlavesObtenidas"
+            android:label="@string/title_activity_llaves_obtenidas"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".AbrirLlave"></activity>
     </application>
 
 </manifest>

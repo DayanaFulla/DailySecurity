@@ -166,6 +166,31 @@ namespace Servicios.Controllers
             return msg;
         }
 
+        [HttpGet]
+        [Route("GetLlaveById/{LlaveID}")]
+        public HttpResponseMessage GetLlavesById(string LlaveID)
+        {
+            HttpResponseMessage msg = null;
+            try
+            {
+                Llave llaves = LlaveBRL.GetLlaveByLlaveId(Int32.Parse(LlaveID));
+                if (llaves == null)
+                {
+                    msg = Request.CreateErrorResponse(HttpStatusCode.NotFound, "NOTFOUND");
+                }
+                else
+                {
+                    msg = Request.CreateResponse(HttpStatusCode.OK, llaves);
+                }
+            }
+            catch (Exception e)
+            {
+                msg = Request.CreateErrorResponse(HttpStatusCode.NotFound, "ERROR" + e);
+                return msg;
+            }
+            return msg;
+        }
+
         [HttpPost]
         [Route("InsertLlave")]
         public HttpResponseMessage InserLlave(Llave llave)
@@ -209,8 +234,10 @@ namespace Servicios.Controllers
                 }
                 else
                 {
-                    LlaveBRL.ConfirmaRecibido(llave);
-                    msg = Request.CreateResponse(HttpStatusCode.OK, "OK");
+                    if(LlaveBRL.ConfirmaRecibido(llave)==true)
+                        msg = Request.CreateResponse(HttpStatusCode.OK, "OK");
+                    else
+                        msg = Request.CreateResponse(HttpStatusCode.OK, "RPT");
                 }
             }
             catch (Exception e)

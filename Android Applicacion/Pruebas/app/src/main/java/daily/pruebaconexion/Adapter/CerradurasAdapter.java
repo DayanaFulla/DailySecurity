@@ -44,7 +44,7 @@ public class CerradurasAdapter extends BaseAdapter{
 
     public View getView(int position, View convertView, ViewGroup parent) {
         Alarma obj = alarmas.get(position);
-        Log.e("EnvItem",obj.getNombre());
+        Log.e("EnvItem",obj.getNombre()+":"+obj.getEstado());
         convertView = new CerradurasItemAdapter(context, obj);
         return convertView;
     }

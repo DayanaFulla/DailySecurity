@@ -41,46 +41,46 @@ D:\Sistemas\9._I-2018\Ing._Software_3\DailySecurity\Softwares\Servicios\obj\Debu
 D:\Sistemas\9._I-2018\Ing._Software_3\DailySecurity\Softwares\Servicios\obj\Debug\Servicios.dll
 D:\Sistemas\9._I-2018\Ing._Software_3\DailySecurity\Softwares\Servicios\obj\Debug\Servicios.pdb
 D:\Sistemas\9._I-2018\Ing._Software_3\DailySecurity\Softwares\Servicios\bin\Servicios.dll.config
-E:\7moSemestre\Ingeniería de Software III\DailySecurity\Softwares\Servicios\bin\ApplicationInsights.config
-E:\7moSemestre\Ingeniería de Software III\DailySecurity\Softwares\Servicios\bin\roslyn\csc.exe
-E:\7moSemestre\Ingeniería de Software III\DailySecurity\Softwares\Servicios\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
-E:\7moSemestre\Ingeniería de Software III\DailySecurity\Softwares\Servicios\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
-E:\7moSemestre\Ingeniería de Software III\DailySecurity\Softwares\Servicios\bin\roslyn\Microsoft.CodeAnalysis.dll
-E:\7moSemestre\Ingeniería de Software III\DailySecurity\Softwares\Servicios\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
-E:\7moSemestre\Ingeniería de Software III\DailySecurity\Softwares\Servicios\bin\roslyn\Microsoft.CSharp.Core.targets
-E:\7moSemestre\Ingeniería de Software III\DailySecurity\Softwares\Servicios\bin\roslyn\Microsoft.VisualBasic.Core.targets
-E:\7moSemestre\Ingeniería de Software III\DailySecurity\Softwares\Servicios\bin\roslyn\System.Collections.Immutable.dll
-E:\7moSemestre\Ingeniería de Software III\DailySecurity\Softwares\Servicios\bin\roslyn\System.Reflection.Metadata.dll
-E:\7moSemestre\Ingeniería de Software III\DailySecurity\Softwares\Servicios\bin\roslyn\vbc.exe
-E:\7moSemestre\Ingeniería de Software III\DailySecurity\Softwares\Servicios\bin\roslyn\VBCSCompiler.exe
-E:\7moSemestre\Ingeniería de Software III\DailySecurity\Softwares\Servicios\bin\roslyn\VBCSCompiler.exe.config
-E:\7moSemestre\Ingeniería de Software III\DailySecurity\Softwares\Servicios\bin\Servicios.dll.config
-E:\7moSemestre\Ingeniería de Software III\DailySecurity\Softwares\Servicios\bin\Servicios.dll
-E:\7moSemestre\Ingeniería de Software III\DailySecurity\Softwares\Servicios\bin\Servicios.pdb
-E:\7moSemestre\Ingeniería de Software III\DailySecurity\Softwares\Servicios\bin\DailyDB.dll
-E:\7moSemestre\Ingeniería de Software III\DailySecurity\Softwares\Servicios\bin\Microsoft.AI.Agent.Intercept.dll
-E:\7moSemestre\Ingeniería de Software III\DailySecurity\Softwares\Servicios\bin\Microsoft.AI.DependencyCollector.dll
-E:\7moSemestre\Ingeniería de Software III\DailySecurity\Softwares\Servicios\bin\Microsoft.AI.PerfCounterCollector.dll
-E:\7moSemestre\Ingeniería de Software III\DailySecurity\Softwares\Servicios\bin\Microsoft.AI.ServerTelemetryChannel.dll
-E:\7moSemestre\Ingeniería de Software III\DailySecurity\Softwares\Servicios\bin\Microsoft.AI.Web.dll
-E:\7moSemestre\Ingeniería de Software III\DailySecurity\Softwares\Servicios\bin\Microsoft.AI.WindowsServer.dll
-E:\7moSemestre\Ingeniería de Software III\DailySecurity\Softwares\Servicios\bin\Microsoft.ApplicationInsights.dll
-E:\7moSemestre\Ingeniería de Software III\DailySecurity\Softwares\Servicios\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
-E:\7moSemestre\Ingeniería de Software III\DailySecurity\Softwares\Servicios\bin\Newtonsoft.Json.dll
-E:\7moSemestre\Ingeniería de Software III\DailySecurity\Softwares\Servicios\bin\System.Net.Http.Formatting.dll
-E:\7moSemestre\Ingeniería de Software III\DailySecurity\Softwares\Servicios\bin\System.Web.Http.dll
-E:\7moSemestre\Ingeniería de Software III\DailySecurity\Softwares\Servicios\bin\System.Web.Http.WebHost.dll
-E:\7moSemestre\Ingeniería de Software III\DailySecurity\Softwares\Servicios\bin\DailyDB.pdb
-E:\7moSemestre\Ingeniería de Software III\DailySecurity\Softwares\Servicios\bin\Microsoft.AI.DependencyCollector.xml
-E:\7moSemestre\Ingeniería de Software III\DailySecurity\Softwares\Servicios\bin\Microsoft.AI.ServerTelemetryChannel.xml
-E:\7moSemestre\Ingeniería de Software III\DailySecurity\Softwares\Servicios\bin\Microsoft.AI.Web.xml
-E:\7moSemestre\Ingeniería de Software III\DailySecurity\Softwares\Servicios\bin\Microsoft.AI.WindowsServer.xml
-E:\7moSemestre\Ingeniería de Software III\DailySecurity\Softwares\Servicios\bin\Microsoft.ApplicationInsights.xml
-E:\7moSemestre\Ingeniería de Software III\DailySecurity\Softwares\Servicios\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-E:\7moSemestre\Ingeniería de Software III\DailySecurity\Softwares\Servicios\bin\Newtonsoft.Json.xml
-E:\7moSemestre\Ingeniería de Software III\DailySecurity\Softwares\Servicios\bin\System.Net.Http.Formatting.xml
-E:\7moSemestre\Ingeniería de Software III\DailySecurity\Softwares\Servicios\bin\System.Web.Http.xml
-E:\7moSemestre\Ingeniería de Software III\DailySecurity\Softwares\Servicios\bin\System.Web.Http.WebHost.xml
-E:\7moSemestre\Ingeniería de Software III\DailySecurity\Softwares\Servicios\obj\Debug\ServiciosWEB.csprojResolveAssemblyReference.cache
-E:\7moSemestre\Ingeniería de Software III\DailySecurity\Softwares\Servicios\obj\Debug\Servicios.dll
-E:\7moSemestre\Ingeniería de Software III\DailySecurity\Softwares\Servicios\obj\Debug\Servicios.pdb
+D:\Sistemas\9._I-2018\Ing._Software_3\DailySecurityExtra\Softwares\Servicios\bin\ApplicationInsights.config
+D:\Sistemas\9._I-2018\Ing._Software_3\DailySecurityExtra\Softwares\Servicios\bin\roslyn\csc.exe
+D:\Sistemas\9._I-2018\Ing._Software_3\DailySecurityExtra\Softwares\Servicios\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\Sistemas\9._I-2018\Ing._Software_3\DailySecurityExtra\Softwares\Servicios\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\Sistemas\9._I-2018\Ing._Software_3\DailySecurityExtra\Softwares\Servicios\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\Sistemas\9._I-2018\Ing._Software_3\DailySecurityExtra\Softwares\Servicios\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\Sistemas\9._I-2018\Ing._Software_3\DailySecurityExtra\Softwares\Servicios\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\Sistemas\9._I-2018\Ing._Software_3\DailySecurityExtra\Softwares\Servicios\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\Sistemas\9._I-2018\Ing._Software_3\DailySecurityExtra\Softwares\Servicios\bin\roslyn\System.Collections.Immutable.dll
+D:\Sistemas\9._I-2018\Ing._Software_3\DailySecurityExtra\Softwares\Servicios\bin\roslyn\System.Reflection.Metadata.dll
+D:\Sistemas\9._I-2018\Ing._Software_3\DailySecurityExtra\Softwares\Servicios\bin\roslyn\vbc.exe
+D:\Sistemas\9._I-2018\Ing._Software_3\DailySecurityExtra\Softwares\Servicios\bin\roslyn\VBCSCompiler.exe
+D:\Sistemas\9._I-2018\Ing._Software_3\DailySecurityExtra\Softwares\Servicios\bin\roslyn\VBCSCompiler.exe.config
+D:\Sistemas\9._I-2018\Ing._Software_3\DailySecurityExtra\Softwares\Servicios\bin\Servicios.dll.config
+D:\Sistemas\9._I-2018\Ing._Software_3\DailySecurityExtra\Softwares\Servicios\bin\Servicios.dll
+D:\Sistemas\9._I-2018\Ing._Software_3\DailySecurityExtra\Softwares\Servicios\bin\Servicios.pdb
+D:\Sistemas\9._I-2018\Ing._Software_3\DailySecurityExtra\Softwares\Servicios\bin\DailyDB.dll
+D:\Sistemas\9._I-2018\Ing._Software_3\DailySecurityExtra\Softwares\Servicios\bin\Microsoft.AI.Agent.Intercept.dll
+D:\Sistemas\9._I-2018\Ing._Software_3\DailySecurityExtra\Softwares\Servicios\bin\Microsoft.AI.DependencyCollector.dll
+D:\Sistemas\9._I-2018\Ing._Software_3\DailySecurityExtra\Softwares\Servicios\bin\Microsoft.AI.PerfCounterCollector.dll
+D:\Sistemas\9._I-2018\Ing._Software_3\DailySecurityExtra\Softwares\Servicios\bin\Microsoft.AI.ServerTelemetryChannel.dll
+D:\Sistemas\9._I-2018\Ing._Software_3\DailySecurityExtra\Softwares\Servicios\bin\Microsoft.AI.Web.dll
+D:\Sistemas\9._I-2018\Ing._Software_3\DailySecurityExtra\Softwares\Servicios\bin\Microsoft.AI.WindowsServer.dll
+D:\Sistemas\9._I-2018\Ing._Software_3\DailySecurityExtra\Softwares\Servicios\bin\Microsoft.ApplicationInsights.dll
+D:\Sistemas\9._I-2018\Ing._Software_3\DailySecurityExtra\Softwares\Servicios\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\Sistemas\9._I-2018\Ing._Software_3\DailySecurityExtra\Softwares\Servicios\bin\Newtonsoft.Json.dll
+D:\Sistemas\9._I-2018\Ing._Software_3\DailySecurityExtra\Softwares\Servicios\bin\System.Net.Http.Formatting.dll
+D:\Sistemas\9._I-2018\Ing._Software_3\DailySecurityExtra\Softwares\Servicios\bin\System.Web.Http.dll
+D:\Sistemas\9._I-2018\Ing._Software_3\DailySecurityExtra\Softwares\Servicios\bin\System.Web.Http.WebHost.dll
+D:\Sistemas\9._I-2018\Ing._Software_3\DailySecurityExtra\Softwares\Servicios\bin\DailyDB.pdb
+D:\Sistemas\9._I-2018\Ing._Software_3\DailySecurityExtra\Softwares\Servicios\bin\Microsoft.AI.DependencyCollector.xml
+D:\Sistemas\9._I-2018\Ing._Software_3\DailySecurityExtra\Softwares\Servicios\bin\Microsoft.AI.ServerTelemetryChannel.xml
+D:\Sistemas\9._I-2018\Ing._Software_3\DailySecurityExtra\Softwares\Servicios\bin\Microsoft.AI.Web.xml
+D:\Sistemas\9._I-2018\Ing._Software_3\DailySecurityExtra\Softwares\Servicios\bin\Microsoft.AI.WindowsServer.xml
+D:\Sistemas\9._I-2018\Ing._Software_3\DailySecurityExtra\Softwares\Servicios\bin\Microsoft.ApplicationInsights.xml
+D:\Sistemas\9._I-2018\Ing._Software_3\DailySecurityExtra\Softwares\Servicios\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\Sistemas\9._I-2018\Ing._Software_3\DailySecurityExtra\Softwares\Servicios\bin\Newtonsoft.Json.xml
+D:\Sistemas\9._I-2018\Ing._Software_3\DailySecurityExtra\Softwares\Servicios\bin\System.Net.Http.Formatting.xml
+D:\Sistemas\9._I-2018\Ing._Software_3\DailySecurityExtra\Softwares\Servicios\bin\System.Web.Http.xml
+D:\Sistemas\9._I-2018\Ing._Software_3\DailySecurityExtra\Softwares\Servicios\bin\System.Web.Http.WebHost.xml
+D:\Sistemas\9._I-2018\Ing._Software_3\DailySecurityExtra\Softwares\Servicios\obj\Debug\ServiciosWEB.csprojResolveAssemblyReference.cache
+D:\Sistemas\9._I-2018\Ing._Software_3\DailySecurityExtra\Softwares\Servicios\obj\Debug\Servicios.dll
+D:\Sistemas\9._I-2018\Ing._Software_3\DailySecurityExtra\Softwares\Servicios\obj\Debug\Servicios.pdb

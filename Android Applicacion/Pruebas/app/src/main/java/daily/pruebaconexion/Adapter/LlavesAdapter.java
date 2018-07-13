@@ -1,9 +1,11 @@
 package daily.pruebaconexion.Adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
 
 import java.util.List;
 
@@ -14,6 +16,7 @@ public class LlavesAdapter extends BaseAdapter{
 
     private List<Llave> llaves;
     private Context context;
+    private String tipo;
 
     public LlavesAdapter(List<Llave> llaves, Context context) {
         this.llaves = llaves;

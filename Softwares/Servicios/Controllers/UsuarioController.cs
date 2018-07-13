@@ -57,7 +57,7 @@ namespace Servicios.Controllers
             }
             catch (Exception en)
             {
-                msg = Request.CreateErrorResponse(HttpStatusCode.NotFound, "pinche problema aqui" + en);
+                msg = Request.CreateErrorResponse(HttpStatusCode.NotFound, " problema aqui" + en);
                 return msg;
             }
             return msg;

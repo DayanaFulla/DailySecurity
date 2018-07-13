@@ -19,7 +19,7 @@ namespace DailyDB.App_Code.BRL
             if (alarma.Estado == 1)
             {
                 alarma.Alerta = row.IsAlertaNull() ? 0 : row.Alerta;
-                alarma.Latitud = row.IsLatitudNull()? "" : row.Latitud;
+                alarma.Latitud = row.IsLatitudNull() ? "" : row.Latitud;
                 alarma.Longitud = row.IsLongitudNull() ? "" : row.Longitud;
                 alarma.UsuarioID = row.IsUsuarioIdNull() ? -1 : row.UsuarioId;
                 alarma.Contrasena = row.IsContrasenaNull() ? "" : row.Contrasena;
@@ -45,13 +45,13 @@ namespace DailyDB.App_Code.BRL
             return alarma;
         }
 
-        public static Alarma GetAlarmaByIdUsuarioById(int idUsuario,int idAlarma)
+        public static Alarma GetAlarmaByIdUsuarioById(int idUsuario, int idAlarma)
         {
-            if (idAlarma <= 0 || idUsuario <= 0 )
+            if (idAlarma <= 0 || idUsuario <= 0)
                 throw new ArgumentException("Id de alarma  o usuario es nula");
 
             DAL.AlarmaDSTableAdapters.AlarmaTableAdapter adapter = new DAL.AlarmaDSTableAdapters.AlarmaTableAdapter();
-            AlarmaDS.AlarmaDataTable table = adapter.GetAlarmaByAlarmaIdByUsuarioId(idUsuario,idAlarma);
+            AlarmaDS.AlarmaDataTable table = adapter.GetAlarmaByAlarmaIdByUsuarioId(idUsuario, idAlarma);
             if (table.Rows.Count == 0)
             {
                 throw new ArgumentException("Vacio o tal vez no existe");
@@ -65,7 +65,7 @@ namespace DailyDB.App_Code.BRL
 
         public static List<Alarma> GetAlarmaByIdUsuario(int idUsuario)
         {
-            if (idUsuario <= 0 )
+            if (idUsuario <= 0)
                 throw new ArgumentException("Id de usuario  o usuario es nula");
 
             DAL.AlarmaDSTableAdapters.AlarmaTableAdapter adapter = new DAL.AlarmaDSTableAdapters.AlarmaTableAdapter();
@@ -93,7 +93,7 @@ namespace DailyDB.App_Code.BRL
         {
             if (alrm == null)
                 throw new ArgumentException("No hay Alarma");
-            
+
             DAL.AlarmaDSTableAdapters.AlarmaTableAdapter adapter = new DAL.AlarmaDSTableAdapters.AlarmaTableAdapter();
             adapter.Update(alrm.AlarmaId, alrm.Estado, alrm.Alerta, alrm.Latitud, alrm.Longitud, alrm.Contrasena, alrm.Nombre, alrm.UsuarioID);
         }

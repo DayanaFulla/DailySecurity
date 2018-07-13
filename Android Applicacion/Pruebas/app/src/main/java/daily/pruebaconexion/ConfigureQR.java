@@ -20,6 +20,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import daily.pruebaconexion.Extras.VarGlobal;
 import daily.pruebaconexion.Modelo.Alarma;
 import daily.pruebaconexion.Servicio.MySingleton;
 import me.dm7.barcodescanner.zbar.Result;
@@ -71,7 +72,7 @@ public class ConfigureQR extends AppCompatActivity implements ZBarScannerView.Re
     }
 
     public void obtenerAlarma(){
-        String url = "http://192.168.137.21:1234/api/Alarma/GetAlarmaByCodigo/"+CODIGO;
+        String url = "http://"+ VarGlobal.IP+":1234/api/Alarma/GetAlarmaByCodigo/"+CODIGO;
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
         (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
@@ -128,9 +129,11 @@ public class ConfigureQR extends AppCompatActivity implements ZBarScannerView.Re
                 if(poner ==1){
                     Intent intent = new Intent(ConfigureQR.this, ConfigureGPS.class);
                     startActivity(intent);
+                    finish();
                 }else{
                     Intent intent = new Intent(ConfigureQR.this, Principal.class);
                     startActivity(intent);
+                    finish();
                 }
             }
         });
