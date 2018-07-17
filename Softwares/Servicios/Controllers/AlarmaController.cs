@@ -81,5 +81,30 @@ namespace Servicios.Controllers
             return msg;
         }
 
+        [HttpGet]
+        [Route("GetAlarmaById/{AlarmaID}")]
+        public HttpResponseMessage GetAlarmaID(string AlarmaID)
+        {
+            HttpResponseMessage msg = null;
+            try
+            {
+                Alarma alarma = AlarmaBRL.GetAlarmaByID(int.Parse(AlarmaID));
+                if (alarma == null)
+                {
+                    msg = Request.CreateErrorResponse(HttpStatusCode.NotFound, "NOTFOUND");
+                }
+                else
+                {
+                    msg = Request.CreateResponse(HttpStatusCode.OK, alarma);
+                }
+            }
+            catch (Exception e)
+            {
+                msg = Request.CreateErrorResponse(HttpStatusCode.NotFound, "ERROR" + e);
+            }
+
+            return msg;
+        }
+
     }
 }

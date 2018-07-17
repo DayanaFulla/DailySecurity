@@ -21,34 +21,25 @@
             app:title="Campo Para Abrir" />
     </android.support.design.widget.AppBarLayout>
 
-    <TextView
-        android:id="@+id/txtLlaveID"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        android:textColor="@android:color/black"
-        android:textSize="20dp"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="32dp"
-        tools:layout_editor_absoluteY="40dp" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="150dp"
-        android:onClick="conectar"
-        android:text="Conectar" />
+    <!--<Button-->
+        <!--android:id="@+id/button"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginLeft="20dp"-->
+        <!--android:layout_marginRight="20dp"-->
+        <!--android:layout_marginTop="150dp"-->
+        <!--android:onClick="conectar"-->
+        <!--android:text="Conectar" />-->
 
-    <Button
+    <ImageButton
         android:id="@+id/button2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="50dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_gravity="center"
+        android:background="@android:color/holo_purple"
         android:onClick="cambiarEstado"
-        android:text="Cambiar Estado" />
+        android:text="Cambiar Estado"
+        app:srcCompat="@drawable/ic_padlockclose" />
+
 </LinearLayout>

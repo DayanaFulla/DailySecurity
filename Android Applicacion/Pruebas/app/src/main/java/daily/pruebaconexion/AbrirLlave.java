@@ -8,6 +8,7 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import java.io.IOException;
@@ -26,6 +27,7 @@ public class AbrirLlave extends AppCompatActivity {
 
     private OutputStream outputStream;
     private InputStream inputStream;
+    private boolean abierto;
 
     Thread thread;
     byte buffer[];
@@ -39,6 +41,7 @@ public class AbrirLlave extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_abrir_llave);
+        conectar();
     }
 
 
@@ -185,7 +188,7 @@ public class AbrirLlave extends AppCompatActivity {
         thread.start();
     }
 
-    public void conectar(View view){
+    public void conectar(){
         if(iniciarBluetooth())
         {
             ConectarBluetooth();
@@ -214,6 +217,14 @@ public class AbrirLlave extends AppCompatActivity {
 
             try
             {
+                ImageButton imageButton = (ImageButton)view;
+                if(!abierto){
+                    abierto = true;
+                    imageButton.setImageResource(R.drawable.ic_padlockopen);
+                }else{
+                    abierto = false;
+                    imageButton.setImageResource(R.drawable.ic_padlockclose);
+                }
                 outputStream.write(command.getBytes());
                 //Envía el número 1 al Arduino. Para obtener una visión detallada de cómo se
                 // maneja el comando resultante, consulte el Código fuente de Arduino.

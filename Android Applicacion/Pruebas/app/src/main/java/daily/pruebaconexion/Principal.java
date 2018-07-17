@@ -2,6 +2,7 @@ package daily.pruebaconexion;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -37,7 +38,7 @@ public class Principal extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_principal);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
 
@@ -64,6 +65,7 @@ public class Principal extends AppCompatActivity
 
     }
 
+
     public void actualizar_Alarmas(){
         List<Llave> llaves = LlaveBRL.actualizarLista(Principal.this);
         final LlavesAdapter adapter = new LlavesAdapter(llaves,Principal.this);
@@ -71,10 +73,10 @@ public class Principal extends AppCompatActivity
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-
                 Intent intent = new Intent(Principal.this, Abrir.class);
                 Llave llave =  adapter.getItem(position);
-                intent.putExtra("LLAVE_ID", llave.getLlaveId());
+                Log.i("Alarma", "verificarLlave: "+llave.getAlarmaId());
+                intent.putExtra("ALARMA_ID", llave.getAlarmaId());
                 startActivity(intent);
             }
         });
@@ -131,6 +133,10 @@ public class Principal extends AppCompatActivity
             startActivity(intent);
         }else if (id == R.id.nsv_llaves) {
             Intent intent = new Intent(Principal.this, LlavesObtenidas.class);
+            startActivity(intent);
+        }else if(id == R.id.nav_close){
+            Intent intent = new Intent(Principal.this, LoginActivity.class);
+            intent.putExtra("Salir",true);
             startActivity(intent);
         }
 

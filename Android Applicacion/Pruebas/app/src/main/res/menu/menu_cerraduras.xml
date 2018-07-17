@@ -4,8 +4,8 @@
         android:id="@+id/menu_compartir"
         android:title="Compartir Llave"
         android:icon="@drawable/ic_menu_share"/>
-    <item
-        android:id="@+id/menu_delete"
-        android:title="Dar de Baja"
-        android:icon="@drawable/ic_menu_manage"/>
+    <!--<item-->
+        <!--android:id="@+id/menu_delete"-->
+        <!--android:title="Dar de Baja"-->
+        <!--android:icon="@drawable/ic_menu_manage"/>-->
 </menu>

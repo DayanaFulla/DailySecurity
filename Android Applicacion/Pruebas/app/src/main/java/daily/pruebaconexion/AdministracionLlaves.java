@@ -1,5 +1,6 @@
 package daily.pruebaconexion;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Parcelable;
 import android.support.design.widget.FloatingActionButton;
@@ -8,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.ContextMenu;
+import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -41,7 +43,7 @@ public class AdministracionLlaves extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_administracion_llaves);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         Intent intentaux = getIntent();
@@ -83,21 +85,40 @@ public class AdministracionLlaves extends AppCompatActivity {
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
-        MenuInflater inflater = new MenuInflater(this);
-        inflater.inflate(R.menu.menu_llaves,menu);
+//        MenuInflater inflater = new MenuInflater(this);
+//        inflater.inflate(R.menu.menu_llaves,menu);
 
     }
 
     @Override
     public boolean onContextItemSelected(MenuItem item) {
-        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-        switch (item.getItemId()) {
-            case R.id.menu_eliminar_llave:
-                Llave llave = adapter.getItem(info.position);
-                Toast.makeText(this, "OBTUVO: "+llave.getLlaveId()+ " Se eliminara", Toast.LENGTH_LONG).show();
-                return true;
-            default:
+//        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+//        switch (item.getItemId()) {
+//            case R.id.menu_eliminar_llave:
+//                Llave llave = adapter.getItem(info.position);
+//                Toast.makeText(this, "OBTUVO: "+llave.getLlaveId()+ " Se eliminara", Toast.LENGTH_LONG).show();
+//                return true;
+//            default:
                 return super.onContextItemSelected(item);
+//        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.principal, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_settings) {
+            Intent intent = new Intent(AdministracionLlaves.this, AdministracionLlaves.class);
+            startActivity(intent);
+            finish();
+            Toast.makeText(AdministracionLlaves.this, "Actualizando Cerraduras", Toast.LENGTH_LONG).show();
+            return true;
         }
+        return super.onOptionsItemSelected(item);
     }
 }

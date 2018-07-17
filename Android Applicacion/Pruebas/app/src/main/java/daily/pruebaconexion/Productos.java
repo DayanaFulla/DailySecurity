@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.ContextMenu;
+import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -85,11 +86,28 @@ public class Productos extends AppCompatActivity {
                 intent.putExtra("Alarma_id", alarma.getAlarmaId());
                 startActivity(intent);
                 return true;
-            case R.id.menu_delete:
-                Toast.makeText(this,"Eliminando",Toast.LENGTH_LONG).show();
-                return true;
+
             default:
                 return super.onContextItemSelected(item);
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.principal, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_settings) {
+            Intent intent = new Intent(Productos.this, Productos.class);
+            startActivity(intent);
+            finish();
+            Toast.makeText(Productos.this, "Actualizando Cerraduras", Toast.LENGTH_LONG).show();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

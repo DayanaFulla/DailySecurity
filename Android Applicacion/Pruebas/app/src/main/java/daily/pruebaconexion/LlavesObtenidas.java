@@ -11,6 +11,8 @@ import android.support.v7.widget.Toolbar;
 import android.text.InputType;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -105,6 +107,25 @@ public class LlavesObtenidas extends AppCompatActivity {
 //                startActivity(intent);
 //            }
 //        });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.principal, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_settings) {
+            Intent intent = new Intent(LlavesObtenidas.this, LlavesObtenidas.class);
+            startActivity(intent);
+            finish();
+            Toast.makeText(LlavesObtenidas.this, "Actualizando Cerraduras", Toast.LENGTH_LONG).show();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 }

@@ -7,23 +7,23 @@
     android:orientation="vertical"
     tools:context=".AbrirLlave">
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="150dp"
-        android:onClick="conectar"
-        android:text="Conectar" />
+    <!--<Button-->
+        <!--android:id="@+id/button"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginLeft="20dp"-->
+        <!--android:layout_marginRight="20dp"-->
+        <!--android:layout_marginTop="150dp"-->
+        <!--android:onClick="conectar"-->
+        <!--android:text="Conectar" />-->
 
-    <Button
+    <ImageButton
         android:id="@+id/button2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="50dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_gravity="center"
+        android:background="@android:color/holo_purple"
         android:onClick="cambiarEstado"
-        android:text="Cambiar Estado" />
+        android:text="Cambiar Estado"
+        app:srcCompat="@drawable/ic_padlockclose" />
 </LinearLayout>

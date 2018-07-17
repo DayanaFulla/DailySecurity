@@ -22,9 +22,9 @@
             <item
                 android:id="@+id/nav_configure"
                 android:icon="@drawable/add_key"
-                android:title="Configuraar nuevo producto" />
+                android:title="Configurar nuevo producto" />
             <item
-                android:id="@+id/nav_share"
+                android:id="@+id/nav_close"
                 android:icon="@mipmap/ic_menu_logout"
                 android:title="Salir" />
 

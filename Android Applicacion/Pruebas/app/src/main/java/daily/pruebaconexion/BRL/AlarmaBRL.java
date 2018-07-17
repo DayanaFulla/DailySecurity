@@ -18,6 +18,7 @@ import com.android.volley.RetryPolicy;
 import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
@@ -25,6 +26,11 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.sql.Time;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -32,10 +38,12 @@ import java.util.Map;
 
 import daily.pruebaconexion.Abrir;
 import daily.pruebaconexion.Adapter.CerradurasAdapter;
+import daily.pruebaconexion.AdministracionLlaves;
 import daily.pruebaconexion.ConfigureGPS;
 import daily.pruebaconexion.ConfigureQR;
 import daily.pruebaconexion.Extras.VarGlobal;
 import daily.pruebaconexion.Modelo.Alarma;
+import daily.pruebaconexion.Modelo.Llave;
 import daily.pruebaconexion.Modelo.Usuario;
 import daily.pruebaconexion.Principal;
 import daily.pruebaconexion.Productos;
@@ -45,6 +53,60 @@ import daily.pruebaconexion.Servicio.MySingleton;
 public class AlarmaBRL {
 
     public AlarmaBRL() {
+    }
+
+    public static void getAlarmaID(int AlarmaID, final Context context){
+        String url = "http://"+VarGlobal.IP+":1234/api/Alarma/GetAlarmaById/"+AlarmaID;
+        final Alarma alarma = new Alarma();
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
+        (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Log.i("Alarma", "onResponse: entro a "+response.toString());
+                try {
+                    alarma.setContrasena(response.getString("Contrasena").trim());
+                    Log.i("Alarma", "onResponse: "+ alarma.getContrasena());
+                    VarGlobal.CONTRESEÑA = alarma.getContrasena();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    Log.e("ERROR:", e.toString());
+                }
+
+            }
+        }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                // TODO: Handle error
+                if (error.networkResponse.statusCode == 404) {
+                    Log.e("Alarma", "404 "+error.toString());
+                }else if(error.networkResponse == null){
+                    if(error.getClass().equals(TimeoutError.class)){
+                        Log.e("Alarma", "NULL TIME "+error.toString());
+                    }
+                }else{
+                    Log.e("Alarma", error.toString());
+
+                }
+            }
+        });
+        jsonObjectRequest.setRetryPolicy(new RetryPolicy() {
+            @Override
+            public int getCurrentTimeout() {
+                return 60000;
+            }
+
+            @Override
+            public int getCurrentRetryCount() {
+                return 60000;
+            }
+
+            @Override
+            public void retry(VolleyError error) throws VolleyError {
+                Log.e("Alarma", "tiem error"+error.toString());
+            }
+        });
+        MySingleton.getInstance(context).addToRequestQueue(jsonObjectRequest);
     }
 
     public static List<Alarma> actualizarLista(final Context context){
@@ -239,6 +301,8 @@ public class AlarmaBRL {
         requestQueue.add(jsonObjectRequest);
         return alarms;
     }
+
+
 
     public void showMessageDialog(String message, final Context context) {
 

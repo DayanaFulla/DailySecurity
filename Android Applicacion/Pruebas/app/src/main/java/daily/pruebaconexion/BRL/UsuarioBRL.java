@@ -3,6 +3,7 @@ package daily.pruebaconexion.BRL;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
@@ -26,6 +27,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
+import daily.pruebaconexion.Extras.GlobalInicioSesion;
 import daily.pruebaconexion.Extras.VarGlobal;
 import daily.pruebaconexion.Modelo.Usuario;
 import daily.pruebaconexion.Principal;
@@ -49,7 +51,6 @@ public class UsuarioBRL {
 
                 if(response.toString().equals("\"NOTFOUND\"")){
                     loadinBar.setVisibility(View.INVISIBLE);
-                    Log.e("Error Fatal:", "No existe WEEEEE");
                     Toast.makeText(context, "Revise sus Datos", Toast.LENGTH_LONG).show();
                     txtemail.setText("");
                     txtcontrasena.setText("");
@@ -61,12 +62,16 @@ public class UsuarioBRL {
                     txtcontrasena.setText("");
                 }else{
                     loadinBar.setVisibility(View.INVISIBLE);
-                    Log.i("Esto recibio", response.toString()+" ira a principal");
                     //Toast.makeText(LoginActivity.this, "Recibio: " + response, Toast.LENGTH_LONG).show();
                     String idUsuario = response.toString();
                     idUsuario = idUsuario.substring(1,idUsuario.length()-1);
                     Usuario.getInstance().setUsuarioID(Integer.parseInt(idUsuario));
                     Toast.makeText(context, "esto es lo que recibio: "+idUsuario, Toast.LENGTH_LONG).show();
+
+                    SharedPreferences sharedPreferences = ((Activity)context).getPreferences(context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putString("IDUsuario",idUsuario);
+                    editor.commit();
                     Intent intent = new Intent(context, Principal.class);
                     context.startActivity(intent);
                     ((Activity)context).finish(); // 'ana'

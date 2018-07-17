@@ -256,8 +256,9 @@ public class LlaveBRL {
         }
         Log.i("comparacion", "D:"+dias+" H:"+horas+" F:"+fecha);
         if(fecha && dias && horas){
-            Intent intent = new Intent(context, AbrirLlave.class);
-            intent.putExtra("LLAVE_ID", llave.getLlaveId());
+            Intent intent = new Intent(context, Abrir.class);
+            intent.putExtra("ALARMA_ID", llave.getAlarmaId());
+            Log.i("Alarma", "verificarLlave: "+llave.getAlarmaId());
             context.startActivity(intent);
         }else{
             showMessageDialogLlave("La llave esta Desactivada",context);

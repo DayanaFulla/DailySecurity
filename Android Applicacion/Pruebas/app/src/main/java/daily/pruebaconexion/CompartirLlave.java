@@ -305,26 +305,7 @@ public class CompartirLlave extends AppCompatActivity implements View.OnClickLis
             llave.setActDias(0);
         }
 
-        /*JSONObject jsonObject = new JSONObject();
-        try {
-            jsonObject.put("Codigo", llave.getCodigo()+"");
-            jsonObject.put("Estado", 0+"");
-            jsonObject.put("Tipo", llave.getTipo()+"");
-            jsonObject.put("Nick", llave.getNick()+"");
-            jsonObject.put("AlarmaId", llave.getAlarmaId()+"");
-            jsonObject.put("HoraInicio", llave.getHoraInicio()+"");
-            jsonObject.put("HoraFin", llave.getHoraFin()+"");
-            jsonObject.put("FechaInicio", +"");
-            jsonObject.put("FechaFin", fechafin+"");
-            jsonObject.put("Dias", llave.getDias()+"");
-            jsonObject.put("ActDias", llave.getActDias()+"");
-            jsonObject.put("ActHora", llave.getActHora()+"");
 
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }*/
-        //Log.e("JSON", "generarLlave: "+jsonObject.toString() );
         showMessageDialog(CompartirLlave.this, llave);
     }
 
